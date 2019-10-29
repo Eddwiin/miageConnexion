@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ListCards = () => {
+const ListCardsComponent = () => {
     return (
         <div>
             List Cards
@@ -8,4 +8,4 @@ const ListCards = () => {
     )
 }
 
-export default ListCards;
+export default ListCardsComponent;
