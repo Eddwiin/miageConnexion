@@ -39,7 +39,7 @@ export default class ListCardsComponent extends React.Component {
 
     render() {
         return(
-            <div>
+            <div className="scrolling-wrapper-flexbox">
                 {this.state.evenements.map(evenement => 
                     <CardComponent key={evenement.id} />
                 )}
