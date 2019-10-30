@@ -1,0 +1,23 @@
+.cards {
+    display: flex;
+    & .card {
+        background-color: orangered;
+        border-radius: 1rem;
+        padding: 2rem;
+        transition: all .2s ease;
+        box-shadow: 4px 4px 12px 2px rgba(black,.75);
+        &:not(:first-child) {
+            margin-left: -4rem;
+        }
+        &:hover {
+            
+            transform: translateY(-.5rem);
+
+            ~ .card {
+                transform: translateX(4rem);
+            }
+        }
+        
+        
+    }
+}

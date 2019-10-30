@@ -1,7 +1,8 @@
 import React from 'react';
 import API from './../../utils/axios';
 import CardComponent from './card/card';
-
+import Cards from './card/test';
+import Aux from '../../hoc/Helper'
 export default class ListCardsComponent extends React.Component {
 
     constructor(props) {
@@ -39,11 +40,16 @@ export default class ListCardsComponent extends React.Component {
 
     render() {
         return(
+            <Aux>
             <div className="scrolling-wrapper-flexbox">
                 {this.state.evenements.map(evenement => 
                     <CardComponent key={evenement.id} />
                 )}
+                    
             </div>
+            <h3>TEST</h3>
+            <Cards/>
+            </Aux>
         )
     }
 }
