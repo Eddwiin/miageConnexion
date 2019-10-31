@@ -12,8 +12,10 @@ const cards = (props) => (
             <p>This is an article and it has some content.</p>
         </div>
         <div className="card">
-        <h2>Title</h2>
-            <p>This is an article and it has some content.</p>
+            <div className="card__text">
+                <h2>Title</h2>
+                <p>This is an article and it has some content.</p>
+            </div>
         </div>
         <div className="card">
         <h2>Title</h2>
