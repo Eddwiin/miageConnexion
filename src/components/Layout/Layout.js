@@ -10,6 +10,11 @@ const layout = (props) => (
     <main>
         {props.children}
     </main>
+    <footer>
+        <div>
+            <h3>Footer</h3>
+        </div>
+    </footer>
     </Aux>
 );
 
