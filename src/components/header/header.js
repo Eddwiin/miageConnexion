@@ -7,7 +7,7 @@ const HeaderComponent = () => {
         <Router>
             <div className="header-container">
                 <header className="header">
-                    <div className="logo"><Link className="navbar-brand">Bouesso</Link></div>
+                    <div className="logo">Bouesso</div>
                     <div className="spacer"></div>
                 </header>
             </div>
