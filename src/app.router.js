@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import ListCardsComponent from './components/list-cards/list-cards';
 import Articles from './components/Articles/Articles'
 
@@ -12,6 +12,7 @@ const AppRouter = () => (
                 <Route exact path="/" component={ListCardsComponent}></Route>
                 <Route exact path="/articles" component={Articles}></Route>
                 <Route component={Error404Component}></Route>
+                <Redirect component={Error404Component}></Redirect>
             </Switch>
         </Suspense>
     </Router>

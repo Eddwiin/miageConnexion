@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import Aux from '../../hoc/Helper'
+import Wrapper from '../../hoc/Wrapper'
 import './Articles.scss'
 class Articles extends Component {
     render() {
         return (
-            <Aux>
+            <Wrapper>
                 <p>test</p>
-            </Aux>
+            </Wrapper>
         )
     }
 }

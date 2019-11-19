@@ -1,8 +1,8 @@
 import React from "react";
 import "./card.scss";
-import Aux from "../../../hoc/Helper";
+import Wrapper from "../../../hoc/Wrapper";
 const CardComponent = props => (
-  <Aux>
+  <Wrapper>
       <div className="card">
         <img className="card__image" src="http://via.placeholder.com/640x360" height="100vh" alt=""/>
         <figcaption className="card__caption">
@@ -10,7 +10,7 @@ const CardComponent = props => (
         </figcaption>
         <a href="/">Plus d'info &rarr;</a>
       </div>
-  </Aux>
+  </Wrapper>
 );
 
 export default CardComponent;

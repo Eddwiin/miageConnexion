@@ -2,7 +2,7 @@ import React from "react";
 import API from "./../../utils/axios";
 import CardComponent from "./card/card";
 import Cards from "./card/test";
-import Aux from "../../hoc/Helper";
+import Wrapper from "../../hoc/Wrapper";
 export default class ListCardsComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +39,7 @@ export default class ListCardsComponent extends React.Component {
 
   render() {
     return (
-      <Aux>
+      <Wrapper>
         <div className="scrolling-wrapper-flexbox">
           {this.state.evenements.map(evenement => (
             <CardComponent key={evenement.id} />
@@ -111,7 +111,7 @@ export default class ListCardsComponent extends React.Component {
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
         </div>
-      </Aux>
+      </Wrapper>
     );
   }
 }
