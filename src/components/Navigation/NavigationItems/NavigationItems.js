@@ -15,7 +15,7 @@ const navigationItems = (props) => (
             <nav className="navigation__nav">
                 <ul className="navigation__list">
                     <NavigationItem link="/" active>Home</NavigationItem>
-                    <NavigationItem link="/">Contact</NavigationItem>
+                    <NavigationItem link="/articles">Articles</NavigationItem>
                     <NavigationItem link="/">About</NavigationItem>
                 </ul>
             </nav>

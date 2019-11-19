@@ -1,4 +1,9 @@
-.scrolling-wrapper-flexbox {
+
+@media screen and (min-width: 1440px){
+  body {
+    overflow: hidden;
+  }
+  .scrolling-wrapper-flexbox {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
@@ -23,8 +28,10 @@
       }
     }
   }
-
   .card__image {
     height: 100vh;
     width: 100%;
   }
+}
+
+

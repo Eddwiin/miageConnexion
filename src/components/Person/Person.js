@@ -8,7 +8,7 @@ const person = props => (
         <li>
           <div>
             {" "}
-            <img src="http://via.placeholder.com/640x360" />
+            <img src="http://via.placeholder.com/640x360" alt="" />
             <a href="#">
               <h2>Title 1</h2>
 
@@ -19,7 +19,7 @@ const person = props => (
         <li>
           <div>
             {" "}
-            <img src="http://via.placeholder.com/640x360" />
+            <img src="http://via.placeholder.com/640x360" alt="" />
             <a href="#">
               <h2>Title 2</h2>
 
@@ -29,7 +29,7 @@ const person = props => (
         </li>
         <li>
           <div>
-            <img src="http://via.placeholder.com/640x360" />{" "}
+            <img src="http://via.placeholder.com/640x360" alt="" />{" "}
             <a href="#">
               <h2>Title 3</h2>
 
@@ -49,7 +49,7 @@ const person = props => (
         </li>
         <li>
           <div>
-            <img src="http://via.placeholder.com/640x360" />{" "}
+            <img src="http://via.placeholder.com/640x360"  alt=""/>{" "}
             <a href="#">
               <h2>Title 5</h2>
 
@@ -59,7 +59,7 @@ const person = props => (
         </li>
         <li>
           <div>
-            <img src="http://via.placeholder.com/640x360" />{" "}
+            <img src="http://via.placeholder.com/640x360"  alt=""/>{" "}
             <a href="#">
               <h2>Title 6</h2>
 

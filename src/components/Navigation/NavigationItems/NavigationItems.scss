@@ -25,9 +25,9 @@
     position: fixed;
     top: 2.5rem;
     right: 2.5rem;
-    background-image: radial-gradient(white, purple);
+    //background-image: radial-gradient(white, purple);
     z-index: 1000;
-    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+    transition: transform .2s cubic-bezier(0.86, 0, 0.07, 1);
   }
   &__nav {
     height: 100vh;
@@ -36,9 +36,9 @@
     top: 0;
     right: 0;
     z-index: 1500;
-    background-color: purple;
+    background-color: black;
     opacity: 0;
-    transition: all 0.8s;
+    transition: all .4s;
   }
 
   &__list {
@@ -67,7 +67,7 @@
         #fff 50%
       );
       background-size: 250%;
-      transition: all 0.3s;
+      transition: all .2s;
       display: inline-block;
     }
 

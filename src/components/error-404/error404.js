@@ -1,5 +1,4 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const errorTemplates = {
@@ -13,9 +12,7 @@ const errorActions = {
 }
 
 const Error404Component = () => (
-    <Container> 
-        <Row>
-            <Col md={{ span: 12}}>
+
                 <div style={errorTemplates}>
                     <h1>Oops!</h1>
                     <h2>404 Not Found</h2>
@@ -27,9 +24,7 @@ const Error404Component = () => (
                         Take Me Home</Link>
                     </div>
                 </div>
-            </Col>
-        </Row>
-    </Container>
+
 );
 
 export default Error404Component;
