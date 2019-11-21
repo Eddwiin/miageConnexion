@@ -27,7 +27,7 @@ class Home extends Component {
             <Article title="Le cauchemar de Sevran"></Article>
             <Article title="Sevran nouveau fief du Fn ?"></Article>
             <Article title="Quel avenir pour la miage?"></Article>
-            <Article title="Atilla tricher ou génie ?"></Article>
+            <Article title="Atilla tricheur ou génie ?"></Article>
             <Article title="Saïd un génie pas comme les autres..."></Article>
           </div>
           <div className="footer-section">
