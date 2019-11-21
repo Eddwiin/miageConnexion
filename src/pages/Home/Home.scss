@@ -33,8 +33,10 @@
           display: grid;
           grid-column: full-start/full-end;
           grid-gap: 2rem;
-          margin: 5vh 2vw;
-          grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+          //margin: 5vh 2vw;
+          margin: 0 2vw;
+          grid-template-columns: repeat(auto-fit,minmax(20rem,auto));
+          grid-gap: 3rem;
       }
       .articles {
           grid-column: full-start/full-end;
@@ -44,7 +46,7 @@
           grid-column-gap: 1.5vw;
           grid-row-gap: 2rem;
           margin: 5vh 5vw;
-          grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
+          grid-template-columns: repeat(auto-fit,minmax(20rem,auto));
       }
       .footer-section{
           background-color: black;

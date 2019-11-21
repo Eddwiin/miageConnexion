@@ -25,6 +25,7 @@ class Home extends Component {
             <Person name='Magu Racist'></Person>
             <Person name='Magu Texan Ranger'></Person>
             <Person name='Magu LePen'></Person>
+            <Person name='Don Dood'></Person>
           </div>
           <div className="articles">
             <Article title="Le cauchemar de Sevran"></Article>
