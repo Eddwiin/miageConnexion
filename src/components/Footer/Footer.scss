@@ -1,0 +1,30 @@
+.footer {
+    
+    &__nav{
+    }
+    &__list{
+        list-style: none;
+        display: flex;
+        align-content: space-around;
+        padding: 3rem;
+        flex-wrap: wrap;
+        
+        &-item{
+            flex: auto;
+            text-align: center;
+            border-right: 1px solid wheat;
+            &-link{
+                color: white;
+                text-decoration: none;
+                &:hover {
+                    color: wheat;
+                }
+                
+            }
+        }
+
+
+    }
+    
+    
+}
