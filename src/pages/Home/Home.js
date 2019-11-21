@@ -5,12 +5,15 @@ import Feature from "../../components/Feature/Feature";
 import Person from "../../components/Person/Person";
 import Article from "../../components/Article/Article";
 import Footer from "../../components/Footer/Footer";
+import Story from "../../components/Story/Story";
 class Home extends Component {
   render() {
     return (
       <Wrapper>
         <section className="home">
-          <div className="cards">&nbsp;</div>
+          <div className="cards">
+            <Story></Story>
+          </div>
           <div className="features">
             <Feature title="The dood"></Feature>
             <Feature title="The Texan"></Feature>

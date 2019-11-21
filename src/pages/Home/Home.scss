@@ -1,6 +1,7 @@
 .home {
     display: grid;
-    grid-template-rows: 95vh repeat(4, min-content);
+    grid-template-rows: auto repeat(4, min-content);
+    //grid-template-rows: 95vh repeat(4, min-content);
     grid-template-columns:
       [full-start] minmax(6rem, 1fr) [center-start] repeat(
         8,
@@ -9,8 +10,17 @@
       [center-end] minmax(6rem, 1fr) [full-end];
 
       .cards {
+        @media screen and (max-width: 768px) {
+            display: none;
+          }
           grid-column: 1/-1;
           background-color: #eee;
+          display: flex;
+          white-space: nowrap;
+          overflow-y: hidden;
+          &::-webkit-scrollbar {
+            display: none;
+          }
       }
       .features {
           margin: 5rem 0;
@@ -30,7 +40,9 @@
           grid-column: full-start/full-end;
           //background-color: azure;
           display: grid;
-          grid-gap: 2rem;
+          //grid-gap: 2rem;
+          grid-column-gap: 1.5vw;
+          grid-row-gap: 2rem;
           margin: 5vh 5vw;
           grid-template-columns: repeat(auto-fit,minmax(20rem,1fr));
       }
