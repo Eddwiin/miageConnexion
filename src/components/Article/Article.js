@@ -10,12 +10,12 @@ const article = (props) => (
                 <img src={city} alt=""/>
             </div>
             <section>
-            <div className="article__title"><h4>{props.title}</h4></div>
+            <div className="article__title"><h3>{props.title}</h3></div>
             <div className="article__description">
             Vorem ipsum dolor sit amet consectetur adipisicing elit. Ad atque ratione explicabo iste dignissimos corrupti
             </div>
             <div className="article__author">
-                El Dood
+                By El Dood
             </div>
             </section>
         </div>

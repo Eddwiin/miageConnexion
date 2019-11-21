@@ -23,9 +23,9 @@ class Home extends Component {
             <Person name='Magu LePen'></Person>
           </div>
           <div className="articles">
-            <Article title="Fn = Maguran ?"></Article>
             <Article title="Le cauchemar de Sevran"></Article>
             <Article title="Sevran nouveau fief du Fn ?"></Article>
+            <Article title="Quel avenir pour la miage?"></Article>
           </div>
           <div className="footer-section">&nbsp;</div>
         </section>
