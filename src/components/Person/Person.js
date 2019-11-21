@@ -1,75 +1,21 @@
-import React from "react";
-import Aux from "../../hoc/Helper";
-import "./Person.scss";
-const person = props => (
-  <Aux>
-    <div className="accordion">
-      <ul>
-        <li>
-          <div>
-            {" "}
-            <img src="http://via.placeholder.com/640x360" alt="" />
-            <a href="#">
-              <h2>Title 1</h2>
-
-              <p>Content 1</p>
-            </a>{" "}
-          </div>
-        </li>
-        <li>
-          <div>
-            {" "}
-            <img src="http://via.placeholder.com/640x360" alt="" />
-            <a href="#">
-              <h2>Title 2</h2>
-
-              <p>Content 2</p>
-            </a>{" "}
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="http://via.placeholder.com/640x360" alt="" />{" "}
-            <a href="#">
-              <h2>Title 3</h2>
-
-              <p>Content 3</p>
-            </a>{" "}
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="http://via.placeholder.com/640x360" />{" "}
-            <a href="#">
-              <h2>Title 4</h2>
-
-              <p>Content 4</p>
-            </a>{" "}
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="http://via.placeholder.com/640x360"  alt=""/>{" "}
-            <a href="#">
-              <h2>Title 5</h2>
-
-              <p>Content 5</p>
-            </a>{" "}
-          </div>
-        </li>
-        <li>
-          <div>
-            <img src="http://via.placeholder.com/640x360"  alt=""/>{" "}
-            <a href="#">
-              <h2>Title 6</h2>
-
-              <p>Content 6</p>
-            </a>{" "}
-          </div>
-        </li>
-      </ul>
-    </div>
-  </Aux>
-);
-
-export default person;
+import React from 'react'
+import './Person.scss'
+import Wrapper from '../../hoc/Wrapper'
+import redSunset from '../../assets/images/red-sunset.jpg'
+const person = (props) => (
+    <Wrapper>
+        <div className="person">
+            <div className="person__img">
+                <img src={redSunset} alt=""/>
+            </div>
+            <div className="person__title">
+                <h3>{props.name}</h3>
+            </div>
+            <div className="person__description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad atque ratione explicabo iste dignissimos corrupti
+            </div>
+            <button className="person__cta">Contact</button>
+        </div>
+    </Wrapper>
+)
+export default person

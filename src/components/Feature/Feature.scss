@@ -1,0 +1,25 @@
+.feature {
+    display: grid;
+    grid-template-columns: min-content 1fr;
+    grid-column-gap: 2.5rem;
+    grid-row-gap: 0rem;
+    margin: 0;
+    &__icon {
+        grid-column: 1/2;
+        grid-row: 1/2;
+        svg {
+            fill: white;
+        }
+    }
+    
+    &__heading {
+        grid-column: 2/-1;
+        grid-row: 1/2;
+        font-size: 2rem;
+    }
+    &__content {
+        grid-row: 2/3;
+        grid-column: 2/-1;
+        
+    }
+}

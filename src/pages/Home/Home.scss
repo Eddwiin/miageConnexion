@@ -1,0 +1,42 @@
+.home {
+    display: grid;
+    grid-template-rows: 95vh repeat(4, min-content);
+    grid-template-columns:
+      [full-start] minmax(6rem, 1fr) [center-start] repeat(
+        8,
+        [col-start] minmax(min-content, 14rem) [col-end]
+      )
+      [center-end] minmax(6rem, 1fr) [full-end];
+
+      .cards {
+          grid-column: 1/-1;
+          background-color: #eee;
+      }
+      .features {
+          margin: 5rem 0;
+          grid-column: center-start/center-end;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+          grid-gap: 2rem;
+      }
+      .crew {
+          display: grid;
+          grid-column: full-start/full-end;
+          grid-gap: 2rem;
+          margin: 5vh 2vw;
+          grid-template-columns: repeat(auto-fit,minmax(25rem,1fr));
+      }
+      .articles {
+          grid-column: full-start/full-end;
+          //background-color: azure;
+          display: grid;
+          grid-gap: 2rem;
+          margin: 0 2vw;
+          grid-template-columns: repeat(auto-fit,minmax(40rem,1fr));
+      }
+      .footer-section{
+          background-color: black;
+          grid-column: 1/-1;
+          height: 10vh;
+      }
+}
