@@ -4,10 +4,10 @@ import './header.scss';
 
 const HeaderComponent = () => {
     return (
-        <Router>
+        <Router>free
             <div className="header-container">
                 <header className="header">
-                    <div className="logo"><Link className="navbar-brand">Bouesso</Link></div>
+                    <div className="logo">free<Link className="navbar-brand">Bouesso</Link></div>
                     <div className="spacer"></div>
                 </header>
             </div>
