@@ -1,6 +1,9 @@
 .home {
     display: grid;
-    grid-template-rows: auto repeat(4, min-content);
+    grid-template-rows: auto 60vh repeat(4, min-content);
+    @media screen and (max-width: 768px) {
+      grid-template-rows: auto  repeat(4, min-content);
+    }
     //grid-template-rows: 95vh repeat(4, min-content);
     grid-template-columns:
       [full-start] minmax(6rem, 1fr) [center-start] repeat(
@@ -22,31 +25,51 @@
             display: none;
           }
       }
-      .features {
-          margin: 5rem 0;
-          grid-column: center-start/center-end;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-          grid-gap: 2rem;
+      .features{
+        @media screen and (max-width: 768px) {
+          background-color: #000;
+          clip-path:polygon(0 0,100% 0, 100% 90%,0 100%);
+          &-section{
+            transform: translateY(-06%) !important;
+          }
+    }
+        background-color: #000;
+        clip-path:polygon(0 0,100% 0, 100% 70%,0 100%);
+        grid-column: full-start/full-end;
+        &-section{
+            //transform: translateY(03%);
+            margin: 5rem 5vw;
+            grid-column: center-start/center-end;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            grid-gap: 2rem;
+        }
       }
+
       .crew {
+        background-color: black;//rgba(0, 0, 0,.5);
+        //clip-path: polygon(0 20%, 100% 30%, 100% 60%, 100% 100%);
+        grid-column: full-start/full-end;
+        margin: 5vh 0;
+        
+        &-section {
           display: grid;
-          grid-column: full-start/full-end;
+          margin:  5vh 3vw;
+          grid-template-columns: repeat(auto-fit,minmax(25rem,auto));
           grid-gap: 2rem;
-          //margin: 5vh 2vw;
-          margin: 0 2vw;
-          grid-template-columns: repeat(auto-fit,minmax(20rem,auto));
-          grid-gap: 3rem;
+
+        }
       }
       .articles {
-          grid-column: full-start/full-end;
-          //background-color: azure;
-          display: grid;
-          //grid-gap: 2rem;
+        //background-color: black;
+        &-section {
+            display: grid;
           grid-column-gap: 1.5vw;
           grid-row-gap: 2rem;
           margin: 5vh 5vw;
           grid-template-columns: repeat(auto-fit,minmax(20rem,auto));
+        }
+          grid-column: full-start/full-end;          
       }
       .footer-section{
           background-color: black;

@@ -9,7 +9,7 @@ const AppRouter = () => (
             <Switch>
                 <Route exact path="/" component={Home}></Route>
                 <Route component={Error404Component}></Route>
-                <Redirect component={Error404Component}></Redirect>
+                <Redirect to='/' component={Error404Component}></Redirect>
             </Switch>
         </Suspense>
     </Router>
