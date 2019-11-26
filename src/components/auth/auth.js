@@ -7,8 +7,8 @@ export default class AuthContainer extends React.Component {
 
     loadRoutes() {
         return (
-            <Switch>
-                <Route exact path="/login" component={LoginComponent}></Route>
+            <Switch> 
+                <Route exact path="/login" component={LoginComponent}> </Route>
                 <Redirect from="/" to="/auth/login"></Redirect>
             </Switch>
         )
