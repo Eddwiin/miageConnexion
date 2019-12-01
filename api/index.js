@@ -30,6 +30,8 @@ app.get("/private/**", (req, res, next) => {
   next();
 });
 
+require("./routes/auth")(app);
+
 const port = process.env.PORT || 5000;
 
 const server = http.createServer(app).listen(port, () => {
