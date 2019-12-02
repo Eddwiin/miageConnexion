@@ -4,6 +4,7 @@ import ListCardsComponent from './components/list-cards/list-cards';
 
 const Error404Component = lazy(() => import('./components/error-404/error404'));
 const AuthContainer = lazy(() => import('./components/auth/auth'));
+const HomeComponent = lazy(() => import('./components/home/home'));
 
 const AppRouter = () => (
     <Router>
@@ -11,6 +12,7 @@ const AppRouter = () => (
             <Switch>
                 <Route exact path="/" component={ListCardsComponent}></Route>
                 <Route path="/auth" component={AuthContainer}></Route>
+                <Route path="/home" component={HomeComponent}></Route>
                 <Route component={Error404Component}></Route>
             </Switch>
         </Suspense>
