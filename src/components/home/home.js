@@ -26,8 +26,11 @@ export class HomeComponent extends React.Component {
     handleSubmit(event) {
         event.preventDefault();
 
-        API.post('', {
-
+        API.post('addEvent', {
+            name: {...this.state.eventName},
+            date: {...this.state.eventDate},
+            image: {...this.state.eventImage},
+            description: {...this.state.eventDescription}
         }).then(() => {
 
         }).catch();
@@ -36,15 +39,15 @@ export class HomeComponent extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} encType="multipart/form-data">
                 <div>
                     <label>Nom de l'événement</label>
-                    <input type="text"  name="eventName" onChange={this.handleChanged} />
+                    <input type="text" name="eventName" onChange={this.handleChanged} />
                 </div>
 
                 <div>
                     <label>Date événement</label>
-                    <input type="date"  name="eventDate" onChange={this.handleChanged} />
+                    <input type="date" name="eventDate" onChange={this.handleChanged} />
                 </div>
 
                 <div>
