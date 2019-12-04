@@ -1,65 +1,140 @@
-import React from 'react';
-import API from './../../utils/axios';
+import React from "react";
+import API from "./../../utils/axios";
 
 const INITIAL_STATE = {
-    eventName: '',
-    eventDate: undefined,
-    eventImage: undefined,
-    eventDescription: '',
-}
+  eventName: "",
+  eventDate: undefined,
+  eventFile: React.createRef(),
+  eventDescription: ""
+};
 
-export class HomeComponent extends React.Component {
+export default class HomeComponent extends React.Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props){
-        super(props);
+    this.state = INITIAL_STATE;
+    this.handleChanged = this.handleChanged.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUpload = this.handleUpload.bind(this);
+  }
 
-        this.state = INITIAL_STATE;
-        this.handleChanged = this.handleChanged.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+  handleChanged(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
-    handleChanged(event) {
-        this.setState({ [event.target.name] : event.target.value })
-    }
+  handleUpload(event) {
+    this.setState({ eventFile: event.target.files[0] });
+  }
 
+  handleSubmit(e) {
+    e.preventDefault();
 
-    handleSubmit(event) {
-        event.preventDefault();
+    const event = {
+      name: this.state.eventName,
+      date: this.state.eventDate,
+      description: this.state.eventDescription
+    };
 
-        API.post('addEvent', {
-            name: {...this.state.eventName},
-            date: {...this.state.eventDate},
-            image: {...this.state.eventImage},
-            description: {...this.state.eventDescription}
-        }).then(() => {
+    API.post("private/addEvent", event).then(result => {
+      const formData = new FormData();
+      formData.append("images", this.state.eventFile);
+      const config = {
+        headers: {
+          "content-type": "multipart/form-data"
+        }
+      };
+      API.post(
+        "private/uploadEvent?id=" + result.data.eventAdded._id,
+        formData,
+        config
+      ).then(() => {
+        console.log("uploaded");
+      });
+    });
+    // const formData = new FormData();
+    // formData.append('myImage', this.state.eventFile);
+    // const config = {
+    //     headers: {
+    //         'content-type': 'multipart/form-data'
+    //     }
+    // };
 
-        }).catch();
-        
-    }
+    //  const event = {
+    //     name: this.state.eventName,
+    //     date: this.state.eventDate,
+    //     file: formData,
+    //     description: this.state.eventDescription
+    // };
 
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit} encType="multipart/form-data">
-                <div>
-                    <label>Nom de l'événement</label>
-                    <input type="text" name="eventName" onChange={this.handleChanged} />
-                </div>
+    // API.post('private/addEvent', formData, config).then(() => {
 
-                <div>
-                    <label>Date événement</label>
-                    <input type="date" name="eventDate" onChange={this.handleChanged} />
-                </div>
+    // });
+    // const event = {
+    //     name: this.state.eventName,
+    //     date: this.state.eventDate,
+    //     file: this.state.eventFile
+    //     description: this.state.eventDescription
+    // }
 
-                <div>
-                    <label>Image</label>
-                    <input type="file" name="eventImage" onChange={this.handleChanged} />
-                </div>
+    // API.post('private/addEvent', event).then(() => {
 
-                <div>
-                    <label>Description</label>
-                    <textarea name="eventDescription" onChange={this.handleChanged} ></textarea>
-                </div>
-            </form>
-        )
-    }
+    // }).catch();
+
+    // let reader = new FileReader();
+    // reader.readAsDataURL(this.state.eventImage.current.files[0]);
+    // reader.onload =  () => {
+
+    //     const event = {
+    //         name: this.state.eventName,
+    //         date: this.state.eventDate,
+    //         image: reader.result,
+    //         description: this.state.eventDescription
+    //     }
+
+    //     API.post('private/addEvent', event).then(() => {
+
+    //     }).catch();
+    // };
+    // const event = {
+    //     name: this.state.eventName,
+    //     date: this.state.eventDate,
+    //     image: this.state.eventImage.current.files[0],
+    //     description: this.state.eventDescription
+    // }
+    // console.log(event);
+    // API.post('private/addEvent', event).then(() => {
+
+    // }).catch();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <div>
+          <label>Nom de l'événement</label>
+          <input type="text" name="eventName" onChange={this.handleChanged} />
+        </div>
+
+        <div>
+          <label>Date événement</label>
+          <input type="date" name="eventDate" onChange={this.handleChanged} />
+        </div>
+
+        <div>
+          <label>Image</label>
+          <input type="file" name="eventImage" onChange={this.handleUpload} />
+        </div>
+
+        <div>
+          <label>Description</label>
+          <textarea
+            name="eventDescription"
+            onChange={this.handleChanged}
+          ></textarea>
+        </div>
+
+        <button type="submit">Save</button>
+      </form>
+    );
+  }
 }
