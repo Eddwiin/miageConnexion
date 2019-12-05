@@ -1,49 +1,34 @@
-import React from 'react';
-import API from './../../utils/axios';
-import CardComponent from './card/card';
+import React from "react";
+import API from "./../../utils/axios";
+import CardComponent from "./card/card";
+
+const INITIAL_STATE = {
+  events: []
+};
 
 export default class ListCardsComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = INITIAL_STATE;
+  }
 
-    constructor(props) {
-        super(props)
-        const evenements = [
-            {
-                id: 'ev1',
-                name: 'Evenement 1',
-                url: 'http://env1.com'
-            },
-            {
-                id: 'ev2',
-                name: 'Evenement 2',
-                url: 'http://env2.com'
-            },
-            {
-                id: 'ev3',
-                name: 'Evenement 3',
-                url: 'http://env3.com'
-            },
-            {
-                id: 'ev4',
-                name: 'Evenement 4',
-                url: 'http://env4.com'
-            }
-        ]
-        this.state = {
-            evenements: [...evenements]
-        }
-    }
-    componentDidMount() {
-        API.get('') // A remplir avec l'url storyblock pour récupérer les événements
-            .then(console.log);
-    }
+  componentWillMount() {
+    API.get("events").then(response => {
+      this.setState({ events: response.data });
+      console.log("my state", this.state);
+    });
+  }
 
-    render() {
-        return(
-            <div>
-                {this.state.evenements.map(evenement => 
+  render() {
+    return (
+      <div>
+        {this.state.events.map(event => (
+          <CardComponent key={event._id} event={event}></CardComponent>
+        ))}
+        {/* {this.state.evenements.map(evenement => 
                     <CardComponent key={evenement.id} />
-                )}
-            </div>
-        )
-    }
+                )} */}
+      </div>
+    );
+  }
 }

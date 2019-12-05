@@ -4,10 +4,13 @@ const logger = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const path = require("path");
 require("dotenv").config();
 
 const mongooseConnection = require("./libs/mongoose");
 const helpers = require("./helpers/utils");
+
+global.rootDirname = __dirname;
 
 mongooseConnection();
 const app = express();
@@ -24,6 +27,8 @@ app.use(
   })
 );
 
+app.use("/public", express.static(path.join(__dirname, "public")));
+
 app.get("/private/**", (req, res, next) => {
   if (!req.session.user) {
     return res.status(403).json({ message: "UnAuth" });
@@ -32,7 +37,7 @@ app.get("/private/**", (req, res, next) => {
 });
 
 require("./routes/auth")(app);
-require('./routes/event')(app);
+require("./routes/event")(app);
 
 const port = process.env.PORT || 5000;
 

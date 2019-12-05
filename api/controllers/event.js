@@ -20,10 +20,9 @@ EventController.addEvent = (req, res) => {
 };
 
 EventController.getEvents = (req, res) => {
-  EventSchema.find().toArray((err, result) => {
+  EventSchema.find().exec((err, result) => {
     if (err) return helpers.catchError(res, err);
-    const events = result.map(element => element._id);
-    return res.status(200).json({ events: events });
+    return res.status(200).json(result);
   });
 };
 
@@ -35,17 +34,16 @@ EventController.getEvent = (req, res) => {
 };
 
 EventController.uploadEvent = (req, res) => {
-  const img = fs.readFileSync(req.file.path);
-  const encode_img = img.toString("base64");
-
-  const finalImg = {
-    contentType: req.file.mimetype,
-    buffer: Buffer.from(encode_img, "base64")
-  };
+  if (req.file && !req.file.path) {
+    return res.status(500).json({ message: "Image not sent" });
+  }
 
   EventSchema.findByIdAndUpdate(
     req.query.id,
-    { image: finalImg },
+    {
+      imageUrl:
+        (process.env.SERVER_DOMAIN || req.headers.host) + "/" + req.file.path
+    },
     (err, updateResult) => {
       if (err) return helpers.catchError(res, err);
       else return res.status(200).json(true);
