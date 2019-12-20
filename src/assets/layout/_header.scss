@@ -1,0 +1,25 @@
+.header {
+  opacity: 0;
+  visibility: hidden;
+  background-color: $color-primary;
+  padding: 1rem;
+  position: relative;
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+
+    &__name {
+      &:not(:last-child) {
+        padding-right: 1.5rem;
+      }
+    }
+  }
+
+  &:hover {
+    opacity: 1;
+    visibility: visible;
+  }
+}

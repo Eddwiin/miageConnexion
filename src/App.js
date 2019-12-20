@@ -1,17 +1,10 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import HeaderComponent from "./layout/header";
 
-import HeaderComponent from './components/header/header';
-import AppRouter from './app.router';
-
-
-function App() {
-  return (
-    <div>
-        <HeaderComponent />
-        <AppRouter />
-    </div>
-  );
-}
+const App = () => (
+  <div>
+    <HeaderComponent />
+  </div>
+);
 
 export default App;
