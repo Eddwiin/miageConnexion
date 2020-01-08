@@ -3,8 +3,8 @@ import "../assets/components/_button.scss";
 import PropTypes from "prop-types";
 
 const Button = props => (
-  <div>
-    <a href={props.href} className="btn">
+  <div className="btn">
+    <a href={props.href} className="btn__link">
       {props.children}
     </a>
   </div>

@@ -1,9 +1,9 @@
 .header {
   opacity: 0;
-  visibility: hidden;
   background-color: $color-primary;
   padding: 1rem;
   position: relative;
+  transition: all 0.5s;
 
   &__menu {
     display: flex;
@@ -20,6 +20,5 @@
 
   &:hover {
     opacity: 1;
-    visibility: visible;
   }
 }
