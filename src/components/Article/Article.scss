@@ -6,8 +6,10 @@
     background-color: rgba(white,.8);
     &__img {
         grid-column: 1/-1;
-        margin:  auto;
-        display: flex;
+        //margin:  auto;
+        //display: flex;
+        object-fit: cover;
+        width: 100%;
         img {
             width: 100%;
             object-fit: cover;

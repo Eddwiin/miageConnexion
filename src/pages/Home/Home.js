@@ -19,6 +19,9 @@ class Home extends Component {
               <Feature title="The&nbsp;dood"></Feature>
               <Feature title="The Texan"></Feature>
               <Feature title="Teaser"></Feature>
+              <Feature title="The&nbsp;dood"></Feature>
+              <Feature title="The Texan"></Feature>
+              <Feature title="Teaser"></Feature>
               {/* <Feature title="Video"></Feature>
             <Feature title="Clip"></Feature> */}
             </section>

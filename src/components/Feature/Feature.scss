@@ -23,6 +23,7 @@
     &__icon {
         grid-column: 1/2;
         grid-row: 1/2;
+        align-self: center;
         svg {
             fill: white;
         }
