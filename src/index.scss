@@ -1,11 +1,26 @@
-@import "assets/abstracts/variables";
-@import "assets/abstracts/mixins";
+@import "./assets/scss/main";
 
-@import "assets/base/animation";
-@import "assets/base/base";
-@import "assets/base/typography";
-@import "assets/base/utilities";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
 
-@import "assets/layout/header";
+html {
+  font-size: 62.5%; // 1rem = 10px
 
-@import "assets/components/button";
+  @include respond-to("tab-land") {
+    font-size: 56.25%; // 1rem = 9px
+  }
+  @include respond-to("tab-port") {
+    font-size: 50%; // 1rem = 8px
+  }
+  @include respond-to("big-desktop") {
+    font-size: 75%; // 1rem = 12px
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
