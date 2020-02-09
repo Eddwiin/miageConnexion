@@ -1,14 +1,23 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ history }) => {
+
+  const openModal = () => {
+    history.push("/login");
+  }
+
   return (
-    <div className="navbar">
-      <div className="navbar__title">Miage connexion</div>
-      <div className="navbar__menu">
-        <Link to="#" className="navbar__menu--1">Log in</Link>
+    <React.Fragment>
+      <div className="navbar">
+        <div className="navbar__title">Miage connexion</div>
+        <div className="navbar__menu">
+          <Link onClick={openModal} to="#" className="navbar__menu--1">Log in</Link>
+        </div>
       </div>
-    </div>
+
+    </React.Fragment>
+   
   )
 };
 

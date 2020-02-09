@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from './../layout/navbar';
 
-const HomeContainer = () => {
+const HomeContainer = (props) => {
   return (
     <div>
-      <Navbar></Navbar>
+      <Navbar {...props}></Navbar>
     </div>
   )
 };

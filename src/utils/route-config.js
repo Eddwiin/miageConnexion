@@ -1,3 +1,4 @@
 export const APP_ROUTES = {
-  HOME: "/home"
+  HOME: "/home",
+  LOGIN: "/login"
 };
