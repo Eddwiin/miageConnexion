@@ -1,0 +1,36 @@
+.navbar {
+    display: block;
+    background-color: $color-navbar;
+    height: 7vh;
+    color: white;
+    
+    &__title {
+        text-transform: uppercase;
+        padding: 1rem;
+        float: left;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+
+    &__menu {
+        float: right;
+        padding: 1rem;
+
+        & > a {
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: white;
+            
+
+            &:hover {
+                font-weight: bold;
+                box-shadow: 0 1rem 2rem rgba(black,.2);
+            }
+
+            &:not(:last-child) {
+                padding-right: 1rem;
+            }
+        }
+
+    }
+}
