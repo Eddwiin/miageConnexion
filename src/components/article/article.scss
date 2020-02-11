@@ -1,0 +1,48 @@
+.article-section {
+  white-space: nowrap;
+  // overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .story {
+    display: inline-block;
+    height: 95vh;
+    width: auto;
+    position: relative;
+    transition: all .3s ease;
+    &:hover .story__overlay{
+        opacity: 1;
+    }
+     &__overlay {
+        opacity: 0;
+        position: absolute;
+        transition: all 1s ease-in-out;
+        bottom: 0;
+        height: 30%;
+        width: 100%;
+        background-color: black;
+        color: white;
+        margin: 0 auto;
+        &-title {
+            font-size: 2rem;
+           text-align: center;
+           margin: 3vh;
+        }
+        &-text {
+            font-size: 1.8rem;
+            white-space: pre-line;
+            text-align: justify;
+            line-height: 1.3rem;
+            margin: 2rem;
+
+        }
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
