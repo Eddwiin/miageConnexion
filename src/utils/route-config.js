@@ -1,4 +1,5 @@
 export const APP_ROUTES = {
   HOME: "/home",
-  LOGIN: "/login"
+  LOGIN: "/login",
+  CMS: "/cms"
 };
