@@ -1,10 +1,17 @@
 import React from "react";
-import Navbar from './../layout/navbar';
-import Article from '../article/article'
-const HomeContainer = (props) => {
+import Navbar from '../shared/navbar/navbar';
+import Article from '../article/article';
+import { Link } from "react-router-dom";
+import './home-container.scss';
+import { APP_ROUTES } from "../../utils/route-config";
+
+const HomeContainer = () => {
+
   return (
     <div className="home-container">
-      <Navbar {...props}></Navbar>
+      <Navbar>
+        <Link to={APP_ROUTES.LOGIN}>Login</Link>
+      </Navbar>
       <Article></Article>
     </div>
   )

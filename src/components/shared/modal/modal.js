@@ -1,5 +1,6 @@
 import React from 'react'
 import Proptypes from 'prop-types';
+import './modal.scss';
 
 const Modal = ({ title, children, history, routeRedirect }) => {
 
