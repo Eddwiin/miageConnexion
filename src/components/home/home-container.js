@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from '../shared/navbar/navbar';
+import { Navbar } from '../shared';
 import Article from '../article/article';
 import { Link } from "react-router-dom";
 import './home-container.scss';

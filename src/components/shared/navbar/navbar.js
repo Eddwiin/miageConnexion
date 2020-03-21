@@ -13,4 +13,4 @@ const Navbar = ({ children }) => {
   )
 };
 
-export default Navbar;
+export { Navbar };

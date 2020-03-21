@@ -27,4 +27,4 @@ Modal.propTypes = {
     title: Proptypes.string.isRequired
 }
 
-export default Modal;
+export { Modal };
