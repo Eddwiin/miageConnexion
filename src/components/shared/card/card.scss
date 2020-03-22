@@ -1,0 +1,52 @@
+.card {
+    border: 1px solid  wheat;
+    background-color: rgba(white,.8);
+    
+    &:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+        box-shadow: 1px 1px rgba(black, 0.5);
+    }
+
+    &__img {
+        object-fit: cover;
+        width: 100%;
+
+        img {
+            width: 100%;
+            height: 25rem;
+            object-fit: cover;
+        }
+    }
+    &__content {
+        color: white;
+        color: black;
+
+        &__title{
+            justify-self: center;
+            width: 80%;
+            text-align: center;
+            h3 {
+                font-size: 2.5rem;
+            }
+            
+        }
+        &__description{
+            margin: 0 1rem;
+            line-height: 2.5rem;
+            font-size: 1.3rem;
+            font-style: italic;
+            padding: 15px;
+            min-height: 20rem;
+            max-height: 20rem;
+            overflow: hidden;
+            
+        }
+        &__created_at{
+            display: flex;
+            justify-content: flex-end;
+            padding: 15px;
+            font-size: 1.2rem;
+        }
+    }
+}
