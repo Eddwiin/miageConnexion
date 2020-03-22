@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './button.scss';
 
 const Button = ({ label, width = "100"  }) => {
-
     return (
         <React.Fragment>
             <button className={"btn w-" + width} type="submit">{label}</button>

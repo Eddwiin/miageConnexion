@@ -1,29 +1,29 @@
 .cms {
     display: grid;
 
-    // &__navbar {
-    //     grid-column: 1/-1;
-    // }
+    &__navbar {
+        grid-column: 1/-1;
+    }
     
+    &__options {
+        
+        &__autocomplete {
+            display: flex;
+            justify-content: center;
+            padding-top: 2rem;
+            padding-bottom: .5rem;
+            width: 100%;
+            position: relative;
+            z-index: 999;
+        }
+    }
+
     &__section {
         display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(20rem,auto));
+        grid-template-columns: repeat(auto-fit,minmax(30rem, 30rem));
         grid-column-gap: 4rem;
         padding: 6rem;
-        // display: grid;
-        // grid-column-gap: 4rem;
-        // margin: 5vh 5vw;
-        // grid-template-columns: repeat(auto-fit,minmax(20rem,auto));
+        position: relative;
+        z-index: 1;
     }
 }
-
-// .articles {
-//     &-section {
-//         display: grid;
-//       grid-column-gap: 1.5vw;
-//       grid-row-gap: 2rem;
-//       margin: 5vh 5vw;
-//       grid-template-columns: repeat(auto-fit,minmax(20rem,auto));
-//     }
-//       grid-column: full-start/full-end;          
-//   }

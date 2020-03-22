@@ -13,7 +13,6 @@
     "moment-timezone": "^0.5.28",
     "node-sass": "^4.13.0",
     "react": "^16.11.0",
-    "react-autocomplete": "^1.8.1",
     "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
     "react-images-upload": "^1.2.7",
