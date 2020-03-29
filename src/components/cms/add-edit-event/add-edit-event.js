@@ -1,9 +1,10 @@
 import React from "react";
+import Proptypes from 'prop-types';
 import { Input, Textarea } from "./../../shared";
 import ImageUploader from "react-images-upload";
 import "./add-edit-event.scss";
 
-const AddEditEvent = () => {
+const AddEditEvent = ({ type }) => {
   return (
     <div className="add-edit-event">
       <div className="add-edit-event__field">
@@ -31,6 +32,11 @@ const AddEditEvent = () => {
       </div>
     </div>
   );
+};
+
+
+AddEditEvent.propTypes = {
+  type: Proptypes.string.isRequired 
 };
 
 export default AddEditEvent;

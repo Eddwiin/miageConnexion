@@ -1,5 +1,31 @@
-.home-container {
-    &::-webkit-scrollbar {
-        display: none;
-      }
+.home-container { 
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  display: grid;
+  // grid-template-rows: repeat(2, 1fr);
+  // height: 100vh;
+  overflow-y: hidden;
+
+  &__navbar {
+    grid-column: 1 / span 1;
+    grid-row: 1 / 2
+  }
+
+  &__slides {
+    grid-column: 1 / span 1;
+    grid-row: 2 / 2;
+    display: flex;
+
+
+    img {
+      height: 100vh;
+      width: auto;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
 }

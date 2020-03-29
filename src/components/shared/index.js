@@ -5,3 +5,5 @@ export { Navbar } from "./navbar/navbar";
 export { Autocomplete } from "./autocomplete/autocomplete";
 export { Input } from "./input/input";
 export { Textarea } from "./textarea/textarea";
+export { NotFound } from './not-found/not-found';
+export { Slide } from './slide/slide';

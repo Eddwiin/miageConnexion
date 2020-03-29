@@ -2,7 +2,7 @@ import React from "react";
 import Proptypes from "prop-types";
 import "./modal.scss";
 
-const Modal = ({ title, children, size, closeModal = () => {} }) => {
+const Modal = ({ title, content, footer, closeModal = () => {} }) => {
   return (
     <div className="modal">
       <div className="modal__content">
@@ -12,10 +12,8 @@ const Modal = ({ title, children, size, closeModal = () => {} }) => {
             &times;
           </span>
         </div>
-        <div className="modal__content__body">{children}</div>
-        <div className="modal__footer">
-          <button className="odal__footer__btn-add">Envoyer</button>
-        </div>
+        <div className="modal__content__body">{content}</div>
+        <div className="modal__footer">{footer}</div>
       </div>
     </div>
   );

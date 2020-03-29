@@ -9,6 +9,8 @@ const Modal = lazy(() =>
   import("./../shared").then(module => ({ default: module.Modal }))
 );
 const AddEditEvent = lazy(() => import("./add-edit-event/add-edit-event"));
+const Button = lazy(() => import('./../shared').then(module => ({default: module.Button} )));
+// const NotFound = lazy(() => import('./../shared').then(module => ({ default: module.NotFound }) ));
 
 const CMSContainer = () => {
   const [events, setEvents] = useState([]);
@@ -17,6 +19,7 @@ const CMSContainer = () => {
 
   useEffect(() => {
     fetchEvents().then(response => {
+      console.log(response.data.stories);
       setEvents(response.data.stories);
       setEventsCopy(response.data.stories);
     });
@@ -30,12 +33,23 @@ const CMSContainer = () => {
   };
 
   const showModal = () => {
+
+    const footer = (
+      <div>
+        <Button label="Ajouter" color="primary" width={75} 
+                style={{ fontSize: "1.5rem" }}/>
+      </div>
+    )
+
     switch (typeOfModal) {
       case "add":
         return (
-          <Modal title="Ajouter un événement" closeModal={closeModal}>
-            <AddEditEvent></AddEditEvent>
-          </Modal>
+          <Modal 
+            title="Ajouter un événement" 
+            closeModal={closeModal}
+            content={<AddEditEvent type={typeOfModal}></AddEditEvent>}
+            footer={footer}
+            />
         );
 
       default:
@@ -71,6 +85,9 @@ const CMSContainer = () => {
       </div>
 
       <section className="cms__section">
+
+        {/* {eventsCopy.length === 0 && <NotFound  message="Not event found" />  } */}
+
         {eventsCopy.map(event => {
           return (
             <div key={event.id}>
