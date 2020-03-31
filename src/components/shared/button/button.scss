@@ -8,7 +8,7 @@
 
     transition: all 0.2s;
     position: relative;
-    font-size: 20px;
+    font-size: 2rem;
 
     //Change for the <button> element
     border: none;
@@ -36,11 +36,6 @@
         background-color: $color-primary;
         color: white;
     }
-
-    // &--light {
-    //     background-color: #fff;
-    //     color: $color-secondary;
-    // }
 
     &::after {
         content: "";

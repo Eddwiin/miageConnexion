@@ -13,7 +13,7 @@ const Modal = ({ title, content, footer, closeModal = () => {} }) => {
           </span>
         </div>
         <div className="modal__content__body">{content}</div>
-        <div className="modal__footer">{footer}</div>
+        <div className="modal__content__footer">{footer}</div>
       </div>
     </div>
   );

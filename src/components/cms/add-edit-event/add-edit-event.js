@@ -4,22 +4,21 @@ import { Input, Textarea } from "./../../shared";
 import ImageUploader from "react-images-upload";
 import "./add-edit-event.scss";
 
-const AddEditEvent = ({ type }) => {
+const AddEditEvent = ({ cardToEdit  }) => {
+  console.log({cardToEdit});
   return (
     <div className="add-edit-event">
       <div className="add-edit-event__field">
-        <Input placeholder="Titre" style={{ width: "50%" }} />
+        <Input placeholder="Titre" style={{ width: "50%" }} value={cardToEdit?.name} />
       </div>
-
-      <div className="add-edit-event__field">
-        <Input placeholder="Lien" style={{ width: "50%" }} />
-      </div>
+      
       <div className="add-edit-event__field">
         <Textarea
           placeholder="Description"
-          rows="7"
+          rows="10"
           cols="100"
           style={{ width: "50%" }}
+          value={cardToEdit?.content.content}
         />
       </div>
 
@@ -36,7 +35,7 @@ const AddEditEvent = ({ type }) => {
 
 
 AddEditEvent.propTypes = {
-  type: Proptypes.string.isRequired 
+  cardToEdit: Proptypes.object 
 };
 
 export default AddEditEvent;

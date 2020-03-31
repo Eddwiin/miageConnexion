@@ -16,6 +16,7 @@ const CMSContainer = () => {
   const [events, setEvents] = useState([]);
   const [eventsCopy, setEventsCopy] = useState([]);
   const [typeOfModal, setTypeOfModal] = useState(false);
+  const [currentCard, setCurrentCard] = useState({})
 
   useEffect(() => {
     fetchEvents().then(response => {
@@ -36,21 +37,31 @@ const CMSContainer = () => {
 
     const footer = (
       <div>
-        <Button label="Ajouter" color="primary" width={75} 
+        <Button label={(!!currentCard) ? "Editer" : "Ajouter"} color="primary"
                 style={{ fontSize: "1.5rem" }}/>
       </div>
     )
-
+    
     switch (typeOfModal) {
       case "add":
         return (
           <Modal 
             title="Ajouter un événement" 
             closeModal={closeModal}
-            content={<AddEditEvent type={typeOfModal}></AddEditEvent>}
+            content={<AddEditEvent />}
             footer={footer}
             />
         );
+
+      case "edit":
+        return (
+          <Modal 
+            title={"Editer un événement"} 
+            closeModal={closeModal}
+            content={<AddEditEvent cardToEdit={currentCard}></AddEditEvent>}
+            footer={footer}
+          />
+        )
 
       default:
         return setTypeOfModal(undefined);
@@ -61,49 +72,46 @@ const CMSContainer = () => {
     setTypeOfModal(undefined);
   };
 
+
   return (
     <div className="cms">
+      
       <div className="cms__navbar">
         <Navbar>
-          <Link to="#" onClick={() => setTypeOfModal("add")}>
-            Ajouter un événements
+          <Link to="#" onClick={() => { setTypeOfModal("add"); setCurrentCard(undefined) }}>
+              Ajouter un événements
           </Link>
           <Link to={APP_ROUTES.LOGOUT}>Déconnexion</Link>
-        </Navbar>
+       </Navbar>
       </div>
 
-      <div className="cms__options">
-        <div className="cms__options__autocomplete">
-          <Autocomplete
-            items={events}
-            keyBind="id"
-            valueBind="name"
-            itemSortedEvent={itemSortedEvent}
-            placeholder="Search events ..."
-          ></Autocomplete>
+        <div className="cms__autocomplete">
+            <Autocomplete
+              items={events}
+              keyBind="id"
+              valueBind="name"
+              itemSortedEvent={itemSortedEvent}
+              placeholder="Search events ..."
+            ></Autocomplete>
         </div>
-      </div>
 
-      <section className="cms__section">
+        <section className="cms__section">
+          {eventsCopy.map(card => {
+            return (
+              <div key={card.id} onClick={() => { setTypeOfModal("edit"); setCurrentCard(card) }}>
+                <Card
+                  src={card.content.thumbnail}
+                  alt={card.content.title}
+                  title={card.content.title}
+                  description={card.content.content}
+                  created_at={card.created_at}
+                />
+              </div>
+            );
+          })}
+        </section>
 
-        {/* {eventsCopy.length === 0 && <NotFound  message="Not event found" />  } */}
-
-        {eventsCopy.map(event => {
-          return (
-            <div key={event.id}>
-              <Card
-                src={event.content.thumbnail}
-                alt={event.content.name}
-                title={event.content.name}
-                description={event.content.content}
-                created_at={event.created_at}
-              />
-            </div>
-          );
-        })}
-      </section>
-
-      {typeOfModal && showModal()}
+        {typeOfModal && showModal()}
     </div>
   );
 };
