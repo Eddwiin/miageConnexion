@@ -10,14 +10,14 @@ const Card = ({
     description,
     created_at
 }) => {
-
+    console.log(title);
     return (
         <div className="card">
             <div className="card__img">
                 <img src={src} alt={alt}/>
+                <figcaption className="card__img__caption">{title}</figcaption>
             </div>
             <section className="card__content">
-                <div className="card__content__title"><h3>{title}</h3></div>
                 <div className="card__content__description">{description}</div>
                 <Moment className="card__content__created_at" format="DD/MM/YYYY, HH:mm">
                     {created_at}

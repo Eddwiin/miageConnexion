@@ -1,63 +1,116 @@
-@import './../../../assets/scss/abstracts/variables';
-@import './../../../assets/scss/abstracts/mixins';
+@import "./../../../assets/scss/abstracts/variables";
+@import "./../../../assets/scss/abstracts/mixins";
+
 
 .modal {
-    position: fixed;
-    height: 100vh;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgba(black, 0.7);
-    z-index: 9999;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(black, 0.7);
+  z-index: 9999;
 
-    &__content {
-    
-        @include absCenter;
-        width: 50%;
-        height: 50%;
-        background-color: white;
-        box-shadow: 0 2rem 4rem rgba(black, 0.3);
-    
-        &--lg {
-            width: 75% !important;
-        }
-        &--sm {
-            width: 25% !important;
-        }
-          
+  &__content {
+      display: grid;
+      background-color: white;
+      box-shadow: 0 2rem 4rem rgba(black, 0.3);
+      border-radius: 1rem;
+      width: 50%;
+      transform: translate(50%, 25%);
 
-        &__header {
-           display: table;
-           width: 100%;
-           border-bottom: 1px solid rgba(black, 0.3);
-           height: 10%;
-
-           &__title {
-               display: table-cell;
-               width: 95%;
-               text-transform: uppercase;
-               font-weight: bold;
-               font-size: 15px;
-               padding: 2rem
-           }
-
-           &__close {
-                display: table-cell;
-                width: 5%;
-                font-size: 3rem;
-                position: relative;
-                top: .6rem;
-    
-                &:hover {
-                    transform: scale(1.3, 1.3);
-                    cursor: pointer;
-                }
-           }
-        }
-
-        &__body {
-            height: 100%;
-            width: 100%;
-        }
+    &--lg {
+      width: 75% !important;
     }
+
+    &--sm {
+      width: 25% !important;
+    }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #b1c2d3;
+
+      &__title {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.5rem;
+        padding: 2rem;
+      }
+
+      &__close {
+        font-size: 3rem;
+        position: relative;
+        top: 1rem;
+        right: 3rem;
+
+        &:hover {
+          transform: scale(1.3, 1.3);
+          cursor: pointer;
+        }
+      }
+    }
+
+
+    &__footer {
+      display: flex;
+      justify-content: flex-end;
+      padding: 2rem;
+    }
+  }
 }
+// .modal {
+//   position: fixed;
+//   height: 100%;
+//   width: 100%;
+//   background-color: rgba(black, 0.7);
+//   z-index: 9999;
+
+//   &__content {
+//     @include absCenter;
+//     background-color: white;
+//     box-shadow: 0 2rem 4rem rgba(black, 0.3);
+//     border-radius: 1rem;
+
+//     &--lg {
+//       width: 75% !important;
+//     }
+
+//     &--sm {
+//       width: 25% !important;
+//     }
+
+//     &__header {
+//       display: flex;
+//       justify-content: space-between;
+//       border-bottom: 1px solid #e9ecef;
+
+//       &__title {
+//         text-transform: uppercase;
+//         font-weight: bold;
+//         font-size: 15px;
+//         padding: 2rem;
+//       }
+
+//       &__close {
+//         font-size: 3rem;
+//         position: relative;
+//         top: 1rem;
+//         right: 3rem;
+
+//         &:hover {
+//           transform: scale(1.3, 1.3);
+//           cursor: pointer;
+//         }
+//       }
+//     }
+//   }
+
+//   &__footer {
+//     display: flex;
+//     justify-content: flex-end;
+//     padding: 2rem;
+
+//     &__btn-add {
+//     }
+//   }
+// }
