@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from "react";
 import { Navbar, Slide } from '../shared';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import './home-container.scss';
 import { APP_ROUTES } from "../../utils/route-config";
 import { fetchEvents } from '../services/event';
@@ -8,12 +8,14 @@ import { fetchEvents } from '../services/event';
 const HomeContainer = () => {
 
   const [events, setEvents] = useState([]);
+  const history = useHistory();
 
   useEffect( () => {
     fetchEvents().then((response) => {
       setEvents(response.data.stories)
     })
   }, [])
+
     
   return (
     <div className="home-container">
@@ -28,9 +30,9 @@ const HomeContainer = () => {
       <div className="home-container__slides">
         { events.map((event) => {
           return (
-            <React.Fragment key={event.id}>
+            <div key={event.id} onClick={() => history.push(`/details-event/${event.id}`)}>
               <Slide  img={event.content.thumbnail} title={event.content.title} text={event.content.summary} />
-            </React.Fragment>
+            </div>
           )
         })}
       </div>

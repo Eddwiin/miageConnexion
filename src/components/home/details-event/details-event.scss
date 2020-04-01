@@ -1,0 +1,44 @@
+.details-event {
+
+    height: 100%;
+
+    &__content {
+
+        &__img {
+           height: 100vh;
+           width: 100%;
+           object-fit: cover;
+        }
+    }
+
+
+    &__layout  {
+        position: fixed;
+        background-color: rgba($color: black, $alpha: .8);
+        height: 100%;
+        width: 30%;
+        top: 3.5rem;
+        color: white;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+          }
+
+        &__title {
+            text-transform: uppercase;
+            font-weight: bold;
+            text-align: center;
+            font-size: 2.5rem;
+            padding-top: 10rem;
+        }
+
+        &__content {
+            font-size: 2.5rem;
+            text-align: center;
+            padding-top: 5rem;
+            width: 95%;
+            line-height: 1.4;
+        }
+    }
+}

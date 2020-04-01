@@ -7,6 +7,9 @@ export async function fetchEvents() {
   });
 }
 
-export async function postEvent() {
-  return await client.post();
+export async function fetchEventById(id) {
+  return await client.get(`cdn/stories/${id}`, {
+    version: process.env.NODE_ENV === "production" ? "published" : "draft",
+    start_with: "events/"
+  });
 }
