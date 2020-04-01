@@ -10,7 +10,6 @@ const Card = ({
     description,
     created_at
 }) => {
-    console.log(title);
     return (
         <div className="card">
             <div className="card__img">

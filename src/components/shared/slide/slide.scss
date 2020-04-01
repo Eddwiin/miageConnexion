@@ -1,18 +1,27 @@
 .slide {
-
+    position: relative;
     height: 100%;
+
+    & > img:hover {
+        filter: brightness(50%);
+        transform: scale(1.1);
+    }
 
     &:hover &__overlay {
         opacity: 1;
+        transform: scale(1.1);
     }
 
     &__overlay {
         opacity: 0;
-        transition: all 1s ease-in-out;
+        transition: all .3s ease-in-out;
         background-color: black;
         color: white;
         margin: 0 auto;
         white-space: pre-wrap;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
 
         &__title {
             font-size: 2rem;
@@ -23,7 +32,7 @@
         &__text {
             font-size: 1.8rem;
             white-space: pre-line;
-            text-align: justify;
+            text-align: center;
             line-height: 1.3rem;
             margin: 2rem;
         }

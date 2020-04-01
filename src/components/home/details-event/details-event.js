@@ -26,7 +26,7 @@ const DetailsEvent = () => {
                 </Navbar>
             </div>
 
-            <div className="details-event__content">
+           <div className="details-event__content">
                 <img className="details-event__content__img" src={currentEvent?.content.thumbnail} alt={currentEvent?.name} />
             </div>
 

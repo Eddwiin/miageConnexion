@@ -20,7 +20,6 @@ const CMSContainer = () => {
 
   useEffect(() => {
     fetchEvents().then(response => {
-      console.log(response.data.stories);
       setEvents(response.data.stories);
       setEventsCopy(response.data.stories);
     });
@@ -32,6 +31,12 @@ const CMSContainer = () => {
     }
     return setEventsCopy(events);
   };
+
+  const selectEventAuto = (event) => {
+    setEventsCopy(
+      events.filter(eventCurrent => eventCurrent.name === event.name)
+    );
+  }
 
   const showModal = () => {
 
@@ -90,8 +95,10 @@ const CMSContainer = () => {
               items={events}
               keyBind="id"
               valueBind="name"
-              itemSortedEvent={itemSortedEvent}
               placeholder="Search events ..."
+              itemSortedEvent={itemSortedEvent}
+              selectEvent={selectEventAuto}
+              
             ></Autocomplete>
         </div>
 
