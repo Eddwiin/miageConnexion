@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import style from './login.module.scss';
 import { Input, Button } from '../../../UI';
-// import loginImg  from './../../../assets/images/login.png';
+import API from './../../../helpers/api';
 
 const LoginComponent = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const onSubmit = (event) => { 
+        event.preventDefault();
+        
+        API.post('/auth/login', { email, password })
+            .then(console.log);
+    }
+
     return (
-        <div className={style.login}>
+        <form onSubmit={onSubmit} className={style.login}>
             <div className={style.login__content}>
 
                 <Input value={email} onChange={e => setEmail(e.target.value)}
@@ -20,7 +27,7 @@ const LoginComponent = () => {
                 
                 <Button label="Se connecter" btnStyle={{ width: "25%" }} />
             </div>
-        </div>
+        </form>
     )
 }
 
