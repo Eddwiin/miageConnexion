@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import style from './login.module.scss';
 import { Input, Button } from '../../../UI';
-import API from './../../../helpers/api';
+import { connect } from 'react-redux';
+import * as actions from './../../../stores/actions';
 
-const LoginComponent = () => {
+const LoginComponent = ({ onAuth }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const onSubmit = (event) => { 
         event.preventDefault();
-        
-        API.post('/auth/login', { email, password })
-            .then(console.log);
+        onAuth(email, password)
     }
 
     return (
@@ -31,4 +30,13 @@ const LoginComponent = () => {
     )
 }
 
-export default LoginComponent
+const mapStateToProps = state => {
+    return {}
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth:  (email, password) => dispatch(actions.auth(email, password)),
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(LoginComponent)

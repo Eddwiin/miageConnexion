@@ -1,12 +1,13 @@
 import React, { Suspense, lazy } from 'react';
 import style from './home.module.scss';
-import { Switch, Route } from 'react-router-dom';
-import APP_ROUTES from '../../../configs/routes';
+import { Switch, Route, Link } from 'react-router-dom';
+import APP_ROUTES from './../../../configs/routes';
+import { Navbar } from './../../../UI';
 
 const ListEventsComponent = lazy(() => import('./../../components/list-events/list-events'));
 const LoginComponent = lazy(() => import('./../../components/login/login'));
 
-const HomeContainer = ({ loadNavbar }) => {
+const HomeContainer = () => {
 
     const laodRoutes = () => (
         <Switch>
@@ -19,7 +20,9 @@ const HomeContainer = ({ loadNavbar }) => {
 
     return (
         <React.Fragment>
-            {loadNavbar()}
+            <Navbar title="Miage Connexion">
+                <Link to={APP_ROUTES.LOGIN}>Login</Link>
+            </Navbar>
             <div className={style.home}>
                 {laodRoutes()}
             </div>
