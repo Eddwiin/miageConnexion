@@ -35,7 +35,6 @@ export function* authCheckState(action) {
     if (!access_token) {
         yield put(actions.logout())
     } else {
-        console.log("testete");
         try {
             const response = yield API.get('/auth/profile', {
                 headers: {
