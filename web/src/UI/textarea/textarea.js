@@ -3,36 +3,44 @@ import Proptypes from "prop-types";
 import style from "./textarea.module.scss";
 
 const Textarea = ({
+  name,
   textAreaStyle,
   placeholder,
   rows,
   cols,
-  meta: { touched, error, warning }
+  register,
+  errorsTemplate,
+  value,
+  onChange = () => { },
 }) => {
   return (
-    <div>
+    <div style={style.formGroup}>
       <textarea
-        className={style.textarea}
+        name={name}
+        className={style.formGroup__textarea}
         style={textAreaStyle}
         placeholder={placeholder}
         rows={rows}
         cols={cols}
+        value={value}
+        onChange={onChange}
+        ref={register}
+        aria-invalid={errorsTemplate ? "true" : "false"}
       ></textarea>
 
-      {
-        touched &&
-        ((error && <span>{error}</span>) ||
-          (warning && <span>{warning}</span>))
-      }
+      {errorsTemplate && <span className={style.formGroup__errors}>{errorsTemplate}</span>}
     </div>
 
   );
 };
 
 Textarea.propTypes = {
+  name: Proptypes.string.isRequired,
   style: Proptypes.object,
   placeholder: Proptypes.string,
   rows: Proptypes.string,
   cols: Proptypes.string,
+  value: Proptypes.any,
+  onChange: Proptypes.func,
 };
 export { Textarea };

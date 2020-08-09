@@ -4,6 +4,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { UserModule } from './user/user.module';
+import { FileModule } from './file/file.module';
+import { EventModule } from './event/event.module';
 
 @Module({
   imports: [
@@ -25,6 +27,8 @@ import { UserModule } from './user/user.module';
       }),
       inject: [ConfigService],
     }),
+    FileModule,
+    EventModule,
   ],
   controllers: [],
   providers: [],

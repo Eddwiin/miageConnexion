@@ -4,7 +4,7 @@ const APP_ROUTES = {
     LOGIN: "/login",
     LOGOUT: "/logout",
     ADD_EVENT: "add-event",
-    LIST_EVENTS: "/list-events",
+    LIST_EVENTS: "/home/list-events",
     CMS: "/cms"
 }
 
