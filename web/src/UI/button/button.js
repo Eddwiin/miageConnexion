@@ -14,7 +14,8 @@ const Button = ({ label, color, btnStyle, type = "submit" }) => {
     }
 
     return (
-        <button style={btnStyle} className={`${style.btn} ${btnColor()}`} type={type}>{label}</button>
+        <button style={btnStyle} className={`${style.btn} ${btnColor()}`} type={type}
+        >{label}</button>
     )
 }
 
@@ -22,7 +23,7 @@ Button.propTypes = {
     label: PropTypes.string.isRequired,
     color: PropTypes.string,
     style: PropTypes.object,
-    type: PropTypes.string
+    type: PropTypes.string,
 }
 
 export { Button };
