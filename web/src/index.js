@@ -4,7 +4,8 @@ import './index.scss';
 import App from './pages/App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import { Provider } from 'react-redux'; 
+import { Provider } from 'react-redux';
+import 'regenerator-runtime/runtime'
 import createSagaMiddleware from 'redux-saga';
 import { watchAuth } from './stores/sagas';
 import authReducer from './stores/reducers/auth';

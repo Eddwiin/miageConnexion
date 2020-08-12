@@ -9,15 +9,15 @@
 html {
   font-size: 62.5%; // 1rem = 10px
 
-  @include respond-to("tab-land") {
-    font-size: 56.25%; // 1rem = 9px
-  }
-  @include respond-to("tab-port") {
-    font-size: 50%; // 1rem = 8px
-  }
-  @include respond-to("big-desktop") {
-    font-size: 75%; // 1rem = 12px
-  }
+  // @include respond-to("tab-land") {
+  //   font-size: 56.25%; // 1rem = 9px
+  // }
+  // @include respond-to("tab-port") {
+  //   font-size: 50%; // 1rem = 8px
+  // }
+  // @include respond-to("big-desktop") {
+  //   font-size: 75%; // 1rem = 12px
+  // }
 }
 
 body {
