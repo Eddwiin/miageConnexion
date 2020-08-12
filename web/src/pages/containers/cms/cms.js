@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import style from './cms.module.scss';
-import { Link } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import APP_ROUTES from './../../../configs/routes';
-import { Navbar } from './../../../UI';
 
-const CMSContainer = () => {
+const AddEditEventComponent = lazy(() => import('./../../components/add-edit-event/add-edit-event'));
+
+const CMSContainer = ({ loadNavbar }) => {
+
+    const loadRoutes = () => (
+        <Switch>
+            <Route to={APP_ROUTES.ADD_EVENT} component={AddEditEventComponent}></Route>
+        </Switch>
+    )
+
     return (
         <React.Fragment>
-            <Navbar title="Miage Connexion">
-                <Link to={APP_ROUTES.ADD_EVENT}>Ajouter événement</Link>
-                <Link to={APP_ROUTES.LOGOUT}>Deconnexion</Link>
-            </Navbar>
-            
+            {loadNavbar()}
             <div className={style.cms}>
-                CMS CONTAINER
-           </div>
+                {loadRoutes()}
+            </div>
         </React.Fragment>
     )
 }
