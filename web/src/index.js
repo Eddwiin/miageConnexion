@@ -1,31 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './index.css';
 import App from './pages/App';
 import * as serviceWorker from './serviceWorker';
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
-import { Provider } from 'react-redux';
-import 'regenerator-runtime/runtime'
-import createSagaMiddleware from 'redux-saga';
-import { watchAuth } from './stores/sagas';
-import authReducer from './stores/reducers/auth';
-require('dotenv').config();
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const rootReducer = combineReducers({
-  auth: authReducer
-});
-const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
-
-sagaMiddleware.run(watchAuth);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
