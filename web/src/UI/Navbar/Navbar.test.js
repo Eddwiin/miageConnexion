@@ -23,3 +23,9 @@ test('displaying title in navbar', () => {
     const titleText = findByTestAttr(wrapper, 'title-text').text();
     expect(titleText).toContain(title)
 });
+
+test('check navbar props', () => {
+    const expectedProps = { title: '', onClick: () => {}}
+    const propsError = checkProps(Navbar, expectedProps)
+    expect(propsError).toBeUndefined();
+})

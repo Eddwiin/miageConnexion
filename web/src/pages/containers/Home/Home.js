@@ -1,11 +1,10 @@
 import React from 'react';
-import { Navbar } from '../../../UI/Navbar/Navbar';
 
-const Home = () => {
-
+const Home = ({ loadNavbar }) => {
     return (
         <div>
-            <Navbar title="miageConnexion">Login</Navbar>
+            {loadNavbar()}
+            Home Container
         </div>
     )
 }

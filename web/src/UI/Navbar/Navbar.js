@@ -13,7 +13,7 @@ const Navbar = ({ children, title, onClick }) => {
     )
 }
 
-Navbar.prototype = {
+Navbar.propTypes = {
     title: PropTypes.string,
     onClick: PropTypes.func
 }
