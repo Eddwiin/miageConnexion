@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 const Navbar = lazy(() => import('./../UI').then(mod => ({ default: mod.Navbar })))
 const Home = lazy(() => import('./containers/Home/Home'));
 const Cms = lazy(() => import('./containers/Cms/Cms'));
+const Login = lazy(() => import('./components/Login/Login'));
 const Logout = lazy(() => import('./components/Logout/Logout'));
 
 function App({ isAuthentified }) {
@@ -20,6 +21,7 @@ function App({ isAuthentified }) {
     routes = () => (
       <Switch data-test="routes-unlogged">
         <Route exact path={SETUP_ROUTES.DEFAULT} render={() => <Redirect to={SETUP_ROUTES.HOME} />} />
+        <Route exact path={SETUP_ROUTES.LOGIN} render={() => <Login loadNavbar={loadNavbar} /> } />
         <Route path={SETUP_ROUTES.HOME} render={() => <Home loadNavbar={loadNavbar} />} />
       </Switch>
     )
