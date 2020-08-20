@@ -1,53 +1,103 @@
 import React from 'react';
-import App from './App';
-import { shallow } from 'enzyme';
-import { storeFactory, findByTestAttr } from '../helpers/testUtils';
+import { UnconnectedApp } from './App';
+import { mount } from 'enzyme';
+import { findByTestAttr, configProps, storeFactory } from '../helpers/testUtils';
 import './../configs/setupTests';
 
-const defaultProps = { isAuthentified: false };
-
-const setup = (props = {}, state = {}) => {
-  const store = storeFactory(state);
-  const setupProp = { ...defaultProps, ...props };
-  return shallow(<App {...setupProp} store={store} />).dive().dive()
+const defaultProps = {
+  checkIsAuthentified: jest.fn(),
+  isAuthentified: false
 }
 
-describe('App render without error', () => {
-  test('App is defined', () => {
-    const wrapper = setup();
-    const component = findByTestAttr(wrapper, 'component-app');
-    expect(component.length).toBe(1)
-  });
+const mountComponent = (props = {}, state = {}) => {
+  const store = storeFactory(state);
+  const setupProps = configProps(defaultProps, props);
+  return mount(<UnconnectedApp {...setupProps} />)
+}
+
+describe('<App />', () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = mountComponent();
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  })
+
+  test('App render without error', () => {
+    const component = findByTestAttr(wrapper, 'component-app')
+    expect(component.length).toBe(1);
+  })
+
+  test('checkIsAuthentified must be call to load routes', () => {
+    expect(wrapper.props().checkIsAuthentified).toHaveBeenCalled()
+  })
 })
 
-describe('Load route for unlogged user', () => {
+describe('Render app when user unlogged', () => {
+  let wrapper;
 
-  test('Check routes loaded', () => {
-    const wrapper = setup({ isAuthentified: false})
-    const routesUnLogged = findByTestAttr(wrapper, 'routes-unlogged');
+  beforeEach(() => {
+    wrapper = mountComponent();
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  })
+
+  test('Test routes for user unlogged have loaded', () => {
+    const routesUnLogged = findByTestAttr(wrapper, 'routes-unlogged')
     expect(routesUnLogged.length).toBe(1)
   })
 
-  test('Check routes for user is not loaded', () => {
-    const wrapper = setup({ isAuthentified: false});
-    const routesLogged = findByTestAttr(wrapper, 'routes-logged');
-    expect(routesLogged.length).toBe(0);
+  test('Test routes for user logged haven\t loaded', () => {
+    const routesLogged = findByTestAttr(wrapper, 'routes-logged')
+    expect(routesLogged.length).toBe(0)
   })
 
+  test('Test navbar for user unlogged has loaded', () => {
+    const navbar = findByTestAttr(wrapper, 'navbar-unlogged');
+    expect(navbar.length).toBe(1);
+  })
+
+  test('Test navbar for user logged hasn\'t loaded', () => {
+    const navbar = findByTestAttr(wrapper, 'navbar-logged');
+    expect(navbar.length).toBe(0);
+  })
 })
 
-describe('Load route for logged user', () => {
-  // test('Check routes for anonymous is not logged', () => {
-  //   const wrapper = setup({ isAuthentified: true})
-  //   const routesUnLogged = findByTestAttr(wrapper, 'routes-unlogged');
-  //   expect(routesUnLogged.length).toBe(0)
+
+describe('Render app when user logged', () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = mountComponent({ isAuthentified: true });
+  })
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  })
+
+  test('Test routes for user unlogged haven\'t loaded', () => {
+    const routesUnLogged = findByTestAttr(wrapper, 'routes-unlogged')
+    expect(routesUnLogged.length).toBe(0)
+  })
+
+  // test('Test routes for user logged have loaded', () => {
+  //   const routesLogged = findByTestAttr(wrapper, 'routes-logged')
+  //   expect(routesLogged.length).toBe(1)
   // })
 
-  test('Check routes for user is loaded', () => {
+  // test('Test navbar for user unlogged hasn\'t loaded', () => {
+  //   const navbar = findByTestAttr(wrapper, 'navbar-unlogged');
+  //   expect(navbar.length).toBe(0);
+  // })
 
-    // const wrapper = setup({ isAuthentified: true});
-    // console.log(wrapper.debug())
-    // const routesLogged = findByTestAttr(wrapper, 'routes-logged');
-    // expect(routesLogged.length).toBe(1);
-  })
+  // test('Test navbar for user logged has loaded', async () => {
+  //   // const navbar = await findByTestAttr(wrapper, 'navbar-logged');
+  //   // await expect(navbar.length).toBe(1);
+
+  // })
 })

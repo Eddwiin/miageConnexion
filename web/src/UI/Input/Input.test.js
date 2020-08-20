@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Input } from './Input';
-import { findByTestAttr, checkProps } from '../../helpers/testUtils';
+import { findByTestAttr, checkProps, configProps } from '../../helpers/testUtils';
 import './../../configs/setupTests';
 
 const defaultProps = {
@@ -16,26 +16,26 @@ const defaultProps = {
     onChange: () => { }
 }
 
-const setup = (props = {}) => {
-    const setupProps = {...defaultProps, ...props}
+const shallowComponent = (props = {}) => {
+    const setupProps = configProps(defaultProps, props);
     return shallow(<Input {...setupProps} />)
 }
 
 describe('Render without error', () => {
     test('Input component render without error', () => {
-        const wrapper = setup();
+        const wrapper = shallowComponent();
         const component = findByTestAttr(wrapper, 'component-input');
         expect(component.length).toBe(1)
     })
 
     test('Do not load error message when input is valid', () => {
-        const wrapper = setup()
+        const wrapper = shallowComponent()
         const errorMessage = findByTestAttr(wrapper, 'error-message')
         expect(errorMessage.length).toBe(0);
     })
 
     test('Load error message when input is invalid', () => {
-        const wrapper = setup({ errorsTemplate: {} })
+        const wrapper = shallowComponent({ errorsTemplate: {} })
         const errorMessage = findByTestAttr(wrapper, 'error-message')
         expect(errorMessage.length).toBe(1);
     })

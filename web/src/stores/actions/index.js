@@ -2,5 +2,7 @@ export {
     authStart,
     authFail,
     authSuccess,
-    authUser
+    authUser,
+    authCheckState,
+    logout
 } from './auth'

@@ -1,8 +1,9 @@
 import React from 'react';
 
-const Cms = () => {
+const Cms = ({ loadNavbar }) => {
     return (
         <div>
+            {loadNavbar()}
             CMS Container
         </div>
     )

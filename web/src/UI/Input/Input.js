@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import style from './Input.module.scss';
 
 const Input = ({
     name,
@@ -13,10 +14,11 @@ const Input = ({
     errorsTemplate
 }) => {
     return (
-        <div data-test="component-input">
+        <div className={style.formGroup} data-test="component-input">
             <input
                 name={name}
                 type={type}
+                className={style.formGroup__input}
                 style={inputStyle}
                 placeholder={placeholder}
                 autoComplete={autoComplete}
@@ -24,7 +26,7 @@ const Input = ({
                 onChange={onChange}
                 ref={register}
             />
-            {errorsTemplate && <span data-test="error-message">{errorsTemplate}</span>}
+            {errorsTemplate && <span className={style.formGroup__errors}  data-test="error-message">{errorsTemplate}</span>}
         </div>
     )
 }

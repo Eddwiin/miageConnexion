@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { Button } from './Button';
-import { findByTestAttr, checkProps } from '../../helpers/testUtils';
+import { findByTestAttr, checkProps, configProps } from '../../helpers/testUtils';
 import './../../configs/setupTests';
 
 const defaultProps = {
@@ -11,21 +11,21 @@ const defaultProps = {
     type: 'submit'
 }
 
-const setup = (props = {}) => {
-    const setupProps = { ...defaultProps, ...props };
+const shallowComponent = (props = {}) => {
+    const setupProps = configProps(defaultProps, props);
     return shallow(<Button {...setupProps} />)
 }
 
 describe('Render without error', () => {
     test('Button render without error', () => {
-        const wrapper = setup();
+        const wrapper = shallowComponent();
         const component = findByTestAttr(wrapper, 'component-button');
         expect(component.length).toBe(1)
     });
 
     test('Label for button is correct', () => {
         const label = "MyButton";
-        const wrapper = setup({ label })
+        const wrapper = shallowComponent({ label })
         const component = findByTestAttr(wrapper, 'component-button');
         expect(component.text()).toContain(label);
     })

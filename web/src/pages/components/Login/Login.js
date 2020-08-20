@@ -1,26 +1,44 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import * as actions from './../../../stores/actions';
 import { Input } from '../../../UI';
 import { Button } from '../../../UI/Button/Button';
+import style from './Login.module.scss';
+import { useForm } from 'react-hook-form';
+import { passwordRegex } from '../../../helpers/form-validation';
 
-const Login = ({ loadNavbar }) => {
+export const UnconnectedLogin = ({ onAuth, loadNavbar }) => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const { register, handleSubmit, errors } = useForm();
+    
     return (
         <React.Fragment>
             {loadNavbar()}
-            <form data-test="component-login">
-                <div>
+            <form data-test="form-login"
+                onSubmit={handleSubmit(() => onAuth(email, password))}
+                className={style.login}>
+                <div className={style.login__content}>
                     <Input name="email" placeholder="Email" value={email} data-test="email-input"
-                        onChange={e => setEmail(e.target.value)} />
+                        inputStyle={{ width: "25%" }} onChange={e => setEmail(e.target.value)} type="email"
+                        register={register({
+                            required: "Email is required",
+                        })}
+                        errorsTemplate={errors?.email && <React.Fragment>{errors.email.message}</React.Fragment>} />
 
                     <Input name="password" placeholder="Password" value={password} data-test="password-input"
-                        onChange={e => setPassword(e.target.value)} />
+                        inputStyle={{ width: "25%" }} onChange={e => setPassword(e.target.value)} type="password"
+                        register={register({
+                            required: "Password is required",
+                            pattern: {
+                                value: passwordRegex(),
+                                message: "Password must contain at least 8 characters"
+                            }
+                        })}
+                        errorsTemplate={errors?.password && <React.Fragment>{errors.password.message}</React.Fragment>} />
 
-                    <Button label="Se connecter" btnStyle={{ width: "25%" }} />
+                    <Button label="Se connecter" btnStyle={{ width: "25%" }} data-test="button-form" />
                 </div>
             </form>
         </React.Fragment>
@@ -33,4 +51,4 @@ const mapDispatchToProps = dispatch => {
         onAuth: (email, password) => dispatch(actions.authUser(email, password))
     }
 }
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(UnconnectedLogin)
