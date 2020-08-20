@@ -1,7 +1,7 @@
 import React from 'react';
 import { UnconnectedApp } from './App';
-import { mount } from 'enzyme';
-import { findByTestAttr, configProps, storeFactory } from '../helpers/testUtils';
+import { mount, shallow } from 'enzyme';
+import { findByTestAttr, configProps } from '../helpers/testUtils';
 import './../configs/setupTests';
 
 const defaultProps = {
@@ -9,8 +9,7 @@ const defaultProps = {
   isAuthentified: false
 }
 
-const mountComponent = (props = {}, state = {}) => {
-  const store = storeFactory(state);
+const mountComponent = (props = {}) => {
   const setupProps = configProps(defaultProps, props);
   return mount(<UnconnectedApp {...setupProps} />)
 }
@@ -68,16 +67,13 @@ describe('Render app when user unlogged', () => {
   })
 })
 
-
 describe('Render app when user logged', () => {
+
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mountComponent({ isAuthentified: true });
-  })
-
-  afterEach(() => {
-    jest.clearAllMocks();
+    const setupProps = {...defaultProps, ...{isAuthentified: true}}
+    wrapper = shallow(<UnconnectedApp {...setupProps} />)
   })
 
   test('Test routes for user unlogged haven\'t loaded', () => {
@@ -85,19 +81,18 @@ describe('Render app when user logged', () => {
     expect(routesUnLogged.length).toBe(0)
   })
 
-  // test('Test routes for user logged have loaded', () => {
-  //   const routesLogged = findByTestAttr(wrapper, 'routes-logged')
-  //   expect(routesLogged.length).toBe(1)
-  // })
+  test('Test routes for user logged have loaded', () => {
+    const routesLogged = findByTestAttr(wrapper, 'routes-logged')
+    expect(routesLogged.length).toBe(1)
+  })
 
-  // test('Test navbar for user unlogged hasn\'t loaded', () => {
-  //   const navbar = findByTestAttr(wrapper, 'navbar-unlogged');
-  //   expect(navbar.length).toBe(0);
-  // })
+  test('Test navbar for user unlogged hasn\'t loaded', () => {
+    const navbar = findByTestAttr(wrapper, 'navbar-unlogged');
+    expect(navbar.length).toBe(0);
+  })
 
   // test('Test navbar for user logged has loaded', async () => {
-  //   // const navbar = await findByTestAttr(wrapper, 'navbar-logged');
-  //   // await expect(navbar.length).toBe(1);
-
+  //   const navbar = await findByTestAttr(wrapper, 'navbar-logged');
+  //   await expect(navbar.length).toBe(1);
   // })
 })

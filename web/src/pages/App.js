@@ -43,37 +43,7 @@ export function UnconnectedApp({ checkIsAuthentified, isAuthentified }) {
 
   React.useEffect(() => {
     checkIsAuthentified();
-  }, [isAuthentified, checkIsAuthentified]);
-
-
-  // const loadRoutes = () => {
-  //   if (!isAuthentified) {
-  //     const loadNavbar = () => (<Navbar title="Miage Connexion" data-test="navbar-unlogged">
-  //       <Link to={SETUP_ROUTES.LOGIN}>Login</Link>
-  //     </Navbar>)
-
-  //     return (
-  //       <Switch data-test="routes-unlogged">
-  //         <Route exact path={SETUP_ROUTES.DEFAULT} render={() => <Redirect to={SETUP_ROUTES.HOME} />} />
-  //         <Route path={SETUP_ROUTES.HOME} render={() => <Home loadNavbar={loadNavbar} />} />
-  //         <Route exact path={SETUP_ROUTES.LOGIN} render={() => <Login loadNavbar={loadNavbar} />} />
-  //       </Switch>
-  //     )
-  //   } else {
-  //     const loadNavbar = () => (<Navbar title="Miage Connexion" data-test="navbar-logged">
-  //       <Link to={SETUP_ROUTES.ADD_EVENT}>Ajouter événement</Link>
-  //       <Link to={SETUP_ROUTES.LOGOUT}>Deconnexion</Link>
-  //     </Navbar>)
-
-  //     return (
-  //       <Switch data-test="routes-logged">
-  //         <Route exact path={SETUP_ROUTES.DEFAULT} render={() => <Redirect to={SETUP_ROUTES.CMS} />} />
-  //         <Route path={SETUP_ROUTES.CMS} render={() => <Cms loadNavbar={loadNavbar} />} />
-  //         <Route exactpath={SETUP_ROUTES.LOGOUT} component={Logout} />
-  //       </Switch>
-  //     )
-  //   }
-  // }
+  }, [checkIsAuthentified, loadRoutes]);
 
   return (
     <Router data-test="component-app">
