@@ -4,7 +4,7 @@ import { Entity, ObjectIdColumn, Column } from "typeorm";
 export class User {
 
     @ObjectIdColumn()
-    id?: string;
+    userId?: string;
 
     @Column()
     email?: string;

@@ -33,9 +33,9 @@ export function UnconnectedApp({ checkIsAuthentified, isAuthentified }) {
 
       return (
         <Switch data-test="routes-logged">
-          <Route exact path={SETUP_ROUTES.DEFAULT} render={() => <Redirect to={SETUP_ROUTES.CMS} />} />
           <Route path={SETUP_ROUTES.CMS} render={() => <Cms loadNavbar={loadNavbar} />} />
-          <Route exactpath={SETUP_ROUTES.LOGOUT} component={Logout} />
+          <Route exact path={SETUP_ROUTES.LOGOUT} component={Logout} />
+          <Redirect to={SETUP_ROUTES.CMS} />
         </Switch>
       )
     }
@@ -43,7 +43,7 @@ export function UnconnectedApp({ checkIsAuthentified, isAuthentified }) {
 
   React.useEffect(() => {
     checkIsAuthentified();
-  }, [checkIsAuthentified, loadRoutes]);
+  }, [checkIsAuthentified]);
 
   return (
     <Router data-test="component-app">
@@ -55,7 +55,7 @@ export function UnconnectedApp({ checkIsAuthentified, isAuthentified }) {
 }
 
 const mapStateToProps = state => ({
-  isAuthentified: !!state.auth.access_token
+  isAuthentified: !!state.auth.userId
 })
 
 const mapDispatchToProps = dispatch => ({

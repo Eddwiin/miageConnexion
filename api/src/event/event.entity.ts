@@ -4,7 +4,7 @@ import { Entity, ObjectIdColumn, Column } from "typeorm";
 export class Event {
 
     @ObjectIdColumn()
-    id?: string;
+    eventId?: string;
 
     @Column()
     title?: string;

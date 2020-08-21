@@ -1,21 +1,12 @@
 import * as actionTypes from './../actions/actionTypes';
+import { updateState } from '../../helpers/reduxUtils';
 
 const initialState = {
-    access_token: null,
     userId: null,
-    expiration_token: null
 }
 
-const authSuccess = (state, action) => {
-    return {
-        ...state,
-        ...action
-    }
-}
-
-const logout = (state) => {
-    return {...state, ...initialState}
-}
+const authSuccess = (state, action) => updateState(state, action.payload);
+const logout = (state) => updateState(state, initialState);
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {

@@ -7,17 +7,22 @@ import style from './Login.module.scss';
 import { useForm } from 'react-hook-form';
 import { passwordRegex } from '../../../helpers/form-validation';
 
-export const UnconnectedLogin = ({ onAuth, loadNavbar }) => {
+export const UnconnectedLogin = ({ loadNavbar, onAuth, isAuthentified }) => {
 
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const { register, handleSubmit, errors } = useForm();
-    
+
+
+
     return (
         <React.Fragment>
             {loadNavbar()}
             <form data-test="form-login"
-                onSubmit={handleSubmit(() => onAuth(email, password))}
+                onSubmit={handleSubmit(() => {
+                    const payload = { email, password }
+                    onAuth(payload);
+                })}
                 className={style.login}>
                 <div className={style.login__content}>
                     <Input name="email" placeholder="Email" value={email} data-test="email-input"
@@ -46,9 +51,15 @@ export const UnconnectedLogin = ({ onAuth, loadNavbar }) => {
     )
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
     return {
-        onAuth: (email, password) => dispatch(actions.authUser(email, password))
+        isAuthentified: !!state.auth.userId
     }
 }
-export default connect(null, mapDispatchToProps)(UnconnectedLogin)
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (payload) => dispatch(actions.authUser(payload)),
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(UnconnectedLogin)

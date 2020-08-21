@@ -9,21 +9,19 @@ export const authFail = (error) => ({
     error
 })
 
-export const authSuccess = (userId, access_token, expiration_token) => ({
+export const authSuccess = (payload) => ({
     type: actionTypes.AUTH_SUCCESS,
-    access_token,
-    userId,
-    expiration_token
+    payload
 })
 
-export const authUser = (email, password) => ({
+export const authUser = (payload) => ({
     type: actionTypes.AUTH_USER,
-    email,
-    password
+    payload
 })
 
-export const authCheckState = () => ({
-    type: actionTypes.AUTH_CHECK_STATE
+export const authCheckState = (payload) => ({
+    type: actionTypes.AUTH_CHECK_STATE,
+    payload
 })
 
 export const logout = () => ({
