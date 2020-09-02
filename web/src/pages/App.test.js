@@ -72,8 +72,7 @@ describe('Render app when user logged', () => {
   let wrapper;
 
   beforeEach(() => {
-    const setupProps = {...defaultProps, ...{isAuthentified: true}}
-    wrapper = shallow(<UnconnectedApp {...setupProps} />)
+    wrapper = mountComponent({ isAuthentified: true })
   })
 
   test('Test routes for user unlogged haven\'t loaded', () => {
@@ -91,8 +90,8 @@ describe('Render app when user logged', () => {
     expect(navbar.length).toBe(0);
   })
 
-  // test('Test navbar for user logged has loaded', async () => {
-  //   const navbar = await findByTestAttr(wrapper, 'navbar-logged');
-  //   await expect(navbar.length).toBe(1);
-  // })
+  test('Test navbar for user logged has loaded', async () => {
+    const navbar = await findByTestAttr(wrapper, 'navbar-logged');
+    await expect(navbar.length).toBe(1);
+  })
 })

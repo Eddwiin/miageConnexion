@@ -17,16 +17,22 @@
 
   &__menu {
     padding: 1rem;
-    padding-left: 1rem;
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: white;
-    white-space: nowrap;
 
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.1);
+    & > a {
+      text-decoration: none;
+      font-size: 1.2rem;
+      color: white;
+      white-space: nowrap;
+      padding-left: 1rem;
     }
 
+    // &:hover {
+    //   cursor: pointer;
+    //   transform: scale(2.1);
+    // }
+
+    &:not(:last-child) {
+      padding-right: 1rem;
+    }
   }
 }

@@ -4,10 +4,14 @@ import { findByTestAttr, configState, configProps } from '../../../helpers/testU
 import './../../../configs/setupTests';
 import { UnconnectedLogin } from './Login';
 import MutationObserver from 'mutation-observer'
+import { act } from 'react-dom/test-utils';
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+
 global.MutationObserver = MutationObserver;
 
 const defaultProps = {
-    loadNavbar: jest.fn(() => { })
+    loadNavbar: jest.fn(() => { }),
+    onAuth: jest.fn(() => { })
 }
 
 const mountComponent = (props = {}, state = {}) => {
@@ -57,6 +61,11 @@ describe('Render', () => {
         expect(buttonComponent.length).toBe(1)
     })
 
+    test('Error messages don\'t display', () => {
+        const errorMessages = findByTestAttr(wrapper, 'error-message');
+        expect(errorMessages.length).toBe(0);
+    })
+
 })
 
 describe('Form validation', () => {
@@ -79,7 +88,7 @@ describe('Form validation', () => {
         const value = "Edouard";
         const mockEvent = { target: { value } };
         emailInput.simulate("change", mockEvent);
-
+        
         expect(mockSetState).toHaveBeenCalledWith(value)
     })
 
@@ -97,11 +106,36 @@ describe('Form validation', () => {
         expect(errorMessage.length).toBe(0);
     })
 
-    // test('Display error messages when user doesn\'t type any value in input after click on button', () => {
-    //     const wrapper = mountComponent();
-    //     const buttonForm = findByTestAttr(wrapper, 'component-button');
-    //     buttonForm.simulate('click');
-    //     const errorMessage = findByTestAttr(wrapper, 'error-message')
-    //     console.log(errorMessage.debug())
+    // test('User authentication was successful after completing the form correctly', async () => {
+    //     render(<UnconnectedLogin loadNavbar={jest.fn(() => {})} onAuth={jest.fn(() => {})} />)
+    //     fireEvent.submit(screen.getByRole("button"))
+    //     expect(await screen.findAllByRole("error-message")).toHaveLength(2);
+
     // })
+
+    test('User authentication was successful after completing the form correctly', async () => {
+        wrapper = mountComponent();
+        const mockOnAuth = jest.fn(() => { });
+        const spy = jest.spyOn(wrapper.props(), 'onAuth');
+        spy.mockImplementation(() => mockOnAuth);
+
+        const emailInput = findByTestAttr(wrapper, 'email-input');
+        emailInput.simulate("change", { target: { value: 'test@test.com' } })
+        const passwordInput = findByTestAttr(wrapper, 'password-input');
+        passwordInput.simulate("change", { target: { value: 'test12358er' } });
+
+    })
+
+    test('User authentication wasn\'t successfully filling the form', async () => {
+        const wrapper = mountComponent();
+        const mockOnAuth = jest.fn(() => { });
+        const spy = jest.spyOn(wrapper.props(), 'onAuth')
+        spy.mockImplementation(() => mockOnAuth);
+
+        const formLogin = findByTestAttr(wrapper, 'form-login');
+        formLogin.simulate("submit");
+        const errorMessages = await findByTestAttr(wrapper, 'error-message');
+        expect(await mockOnAuth).not.toHaveBeenCalled()
+
+    })
 })

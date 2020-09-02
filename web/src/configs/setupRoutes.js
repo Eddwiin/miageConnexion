@@ -3,7 +3,7 @@ const SETUP_ROUTES = {
     HOME: "/home",
     LOGIN: "/login",
     LOGOUT: "/logout",
-    ADD_EVENT: "add-event",
+    ADD_EVENT: "/cms/add-event",
     LIST_EVENTS: "/home/list-events",
     CMS: "/cms"
 }

@@ -1,12 +1,12 @@
 import * as actionTypes from './../actions/actionTypes';
-import { updateState } from '../../helpers/reduxUtils';
+import { updateObjState } from '../../helpers/reduxUtils';
 
 const initialState = {
     userId: null,
 }
 
-const authSuccess = (state, action) => updateState(state, action.payload);
-const logout = (state) => updateState(state, initialState);
+const authSuccess = (state, action) => updateObjState(state, action.payload);
+const logout = (state) => updateObjState(state, initialState);
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {

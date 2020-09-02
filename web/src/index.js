@@ -7,7 +7,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './stores/reducers';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import { watchAuth } from './stores/sagas';
+import { watchAuth, watchEvent } from './stores/sagas';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware()
@@ -15,6 +15,7 @@ const sagaMiddleware = createSagaMiddleware()
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware)));
 
 sagaMiddleware.run(watchAuth);
+sagaMiddleware.run(watchEvent);
 
 ReactDOM.render(
   <React.StrictMode>

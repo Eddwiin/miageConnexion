@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import * as actions from './../stores/actions';
 
 const Navbar = lazy(() => import('./../UI').then(mod => ({ default: mod.Navbar })))
+
 const Home = lazy(() => import('./containers/Home/Home'));
-const Cms = lazy(() => import('./containers/Cms/Cms'));
 const Login = lazy(() => import('./components/Login/Login'));
+
+const Cms = lazy(() => import('./containers/Cms/Cms'));
 const Logout = lazy(() => import('./components/Logout/Logout'));
 
 export function UnconnectedApp({ checkIsAuthentified, isAuthentified }) {
