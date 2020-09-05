@@ -26,3 +26,22 @@ export const addEventImageSuccess = () => ({
 export const addEventImageFail = () => ({
     type: actionTypes.ADD_EVENT_IMAGE_FAIL
 })
+
+export const getEvents = () => ({
+    type: actionTypes.GET_EVENT,
+})
+
+export const getEventsSuccess = (payload) => ({
+    type: actionTypes.GET_EVENT_SUCCESS,
+    payload
+})
+
+export const updateEvent = (payload) => ({
+    type: actionTypes.UPDATE_EVENT,
+    payload
+})
+
+export const updateEventSuccess = (payload) => ({
+    type: actionTypes.UPDATE_EVENT_SUCCESS,
+    payload
+})

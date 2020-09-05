@@ -13,5 +13,8 @@ export class Event {
     description?: string;
 
     @Column()
-    date?: Date;
+    dateStart?: Date;
+
+    @Column()
+    imgName: string;
 }

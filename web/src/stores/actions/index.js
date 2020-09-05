@@ -13,5 +13,9 @@ export {
     addEventFail,
     addEventImage,
     addEventImageSuccess,
-    addEventImageFail
+    addEventImageFail,
+    getEvents,
+    getEventsSuccess,
+    updateEvent,
+    updateEventSuccess
 } from './events'

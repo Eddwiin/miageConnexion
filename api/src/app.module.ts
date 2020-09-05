@@ -8,8 +8,6 @@ import { EventModule } from './event/event.module';
 
 @Module({
   imports: [
-    AuthModule,
-    UserModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
@@ -26,6 +24,8 @@ import { EventModule } from './event/event.module';
       }),
       inject: [ConfigService],
     }),
+    AuthModule,
+    UserModule,
     EventModule
   ],
   controllers: [],

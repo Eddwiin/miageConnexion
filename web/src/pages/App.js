@@ -14,6 +14,7 @@ const Logout = lazy(() => import('./components/Logout/Logout'));
 
 export function UnconnectedApp({ checkIsAuthentified, isAuthentified }) {
 
+
   let loadRoutes = React.useCallback(() => {
     if (!isAuthentified) {
       const loadNavbar = () => (<Navbar title="Miage Connexion" data-test="navbar-unlogged">

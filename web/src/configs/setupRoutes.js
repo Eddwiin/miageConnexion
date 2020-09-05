@@ -3,8 +3,10 @@ const SETUP_ROUTES = {
     HOME: "/home",
     LOGIN: "/login",
     LOGOUT: "/logout",
+    LIST_EVENTS: "/cms/list-events",
     ADD_EVENT: "/cms/add-event",
-    LIST_EVENTS: "/home/list-events",
+    UPDATE_EVENT: "/cms/update-event",
+    UPDATE_EVENT_PARAMS: "/cms/update-event/:eventId",
     CMS: "/cms"
 }
 
