@@ -7,7 +7,7 @@ import * as actions from './../../../stores/actions';
 const ListEvents = lazy(() => import('./../../components/List-events/List-events'));
 const AddUpdateEvent = lazy(() => import('./../../components/Add-update-event/Add-update-event'));
 
-const Cms = ({ loadNavbar }) => {
+const Cms = (props) => {
 
     const loadRoutes = () => {
         return (
@@ -15,7 +15,7 @@ const Cms = ({ loadNavbar }) => {
                 <Suspense fallback={<div>Loading...</div>}>
                     <Route exact path={SETUP_ROUTES.LIST_EVENTS} component={ListEvents} />
                     <Route exact path={SETUP_ROUTES.ADD_EVENT} component={AddUpdateEvent} />
-                    <Route path={SETUP_ROUTES.UPDATE_EVENT} component={AddUpdateEvent} />
+                    <Route exact path={SETUP_ROUTES.UPDATE_EVENT_PARAMS} component={AddUpdateEvent} />
                     <Redirect to={SETUP_ROUTES.LIST_EVENTS} />
                 </Suspense>
             </Switch>
@@ -24,7 +24,7 @@ const Cms = ({ loadNavbar }) => {
 
     return (
         <div>
-            {loadNavbar()}
+            {props.loadNavbar()}
             {loadRoutes()}
         </div>
     )

@@ -14,7 +14,7 @@ export function* addEvent(action) {
     try {
         const response = yield API.post('/event/create', event);
         yield put(actions.addEventSuccess(response.data))
-        yield put(actions.addEventImage({ eventId: response.data.eventId, file: action.payload.file}))
+        yield put(actions.addOrUpdateEventImage({ eventId: response.data.eventId, file: action.payload.file}))
 
     } catch (error) {
         console.error(error);
@@ -22,7 +22,7 @@ export function* addEvent(action) {
     }
 }
 
-export function* addEventImage(action) {
+export function* addOrUpdateEventImage(action) {
     // const extension = action.payload.file.name.split('.')[action.payload.file.name.split('.').length-1];
     const extension = getExtension(action.payload.file);
 
@@ -36,7 +36,7 @@ export function* addEventImage(action) {
         
         const header = { headers: { 'Content-Type': 'multipart/form-data' } };
         const response = yield API.post("/event/upload", formData, header);
-        yield put(actions.addEventImageSuccess(response));
+        yield put(actions.addOrUpdateEventImageSuccess(response));
 
     } catch (error) {
         console.error(error);
@@ -56,8 +56,10 @@ export function* getEvents(action) {
 
 export function* updateEvent(action) {
     try {
-        const response = yield API.put("/event", action.payload);
-        yield put(actions.getEventsSuccess(response.data))
+        yield API.put("/event", action.payload);
+        yield put(actions.updateEventSuccess(action.payload));
+        yield put(actions.addOrUpdateEventImage(action.payload))
+        
     } catch(error) {
         console.error(error);
     }

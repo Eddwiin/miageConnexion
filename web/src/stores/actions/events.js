@@ -14,17 +14,17 @@ export const addEventFail = () => ({
     type: actionTypes.ADD_EVENT_FAIL
 })
 
-export const addEventImage = (payload) => ({
-    type: actionTypes.ADD_EVENT_IMAGE,
+export const addOrUpdateEventImage = (payload) => ({
+    type: actionTypes.ADD_OR_UPDATE_EVENT_IMAGE,
     payload
 })
 
-export const addEventImageSuccess = () => ({
-    type: actionTypes.ADD_EVENT_IMAGE_SUCCESS,
+export const addOrUpdateEventImageSuccess = () => ({
+    type: actionTypes.ADD_OR_UPDATE_EVENT_IMAGE_SUCCESS,
 })
 
 export const addEventImageFail = () => ({
-    type: actionTypes.ADD_EVENT_IMAGE_FAIL
+    type: actionTypes.ADD_OR_UPDATE_EVENT_IMAGE_FAIL
 })
 
 export const getEvents = () => ({

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import { Input, Textarea, Button } from '../../../UI';
@@ -7,21 +7,15 @@ import { useParams } from 'react-router-dom';
 
 export const UnconnectedAddEditEvent = (props) => {
     const { eventId } = useParams();
-
     const [title, setTitle] = React.useState('');
     const [description, setDescription] = React.useState('');
     const fileInput = useRef(null);
     const { register, handleSubmit, errors } = useForm();
 
-    useEffect(() => {
-        console.log(eventId)
-    }, [eventId])
     const onSubmit = () => {
         if (!eventId) {
-            console.log("ADDD")
             props.onAddEvent({ title, description, file: fileInput.current.files[0] })
         } else {
-            console.log({ eventId })
             props.onUpdateEvent({ eventId, title, description, file: fileInput.current.files[0]})
         }
     }

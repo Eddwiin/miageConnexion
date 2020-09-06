@@ -49,11 +49,11 @@ export class EventController {
   }
 
   @Get('/:imgpath')
-  seeUploadedFile(@Param('imgpath') image, @Res() res) {
+  getUploadedFile(@Param('imgpath') image, @Res() res) {
     return res.sendFile(image, { root: `${process.cwd()}/upload/events` });
   }
 
-  @Put('/update')
+  @Put()
   async event(@Body() updateEvent: UpdateEventDTO) {
     return await this.eventService.updateEvent(updateEvent)
   }
