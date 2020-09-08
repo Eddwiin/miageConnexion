@@ -8,7 +8,6 @@ const ListEvents = lazy(() => import('./../../components/List-events/List-events
 const AddUpdateEvent = lazy(() => import('./../../components/Add-update-event/Add-update-event'));
 
 const Cms = (props) => {
-
     const loadRoutes = () => {
         return (
             <Switch>

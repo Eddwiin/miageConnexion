@@ -12,7 +12,7 @@ const Login = lazy(() => import('./components/Login/Login'));
 const Cms = lazy(() => import('./containers/Cms/Cms'));
 const Logout = lazy(() => import('./components/Logout/Logout'));
 
-export function UnconnectedApp({ checkIsAuthentified, isAuthentified }) {
+export function UnconnectedApp({ checkIsAuthentified, isAuthentified, getEvents }) {
 
 
   let loadRoutes = React.useCallback(() => {
@@ -45,9 +45,10 @@ export function UnconnectedApp({ checkIsAuthentified, isAuthentified }) {
   }, [isAuthentified]);
 
   React.useEffect(() => {
+    getEvents();
     checkIsAuthentified();
-  }, [checkIsAuthentified]);
-
+  }, [getEvents,checkIsAuthentified]);
+ 
   return (
     <Router data-test="component-app">
       <Suspense fallback={<div>Loading...</div>}>
@@ -62,7 +63,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  checkIsAuthentified: () => dispatch(actions.authCheckState())
+  checkIsAuthentified: () => dispatch(actions.authCheckState()),
+  getEvents: () => dispatch(actions.getEvents())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UnconnectedApp);

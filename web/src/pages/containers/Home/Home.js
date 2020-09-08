@@ -1,27 +1,15 @@
-import React, { useEffect, lazy, useState } from 'react';
+import React, { lazy } from 'react';
 import { connect } from 'react-redux';
-import * as actions from './../../../stores/actions';
 
-const Slide = lazy(() => import('./../../../UI').then(mod => ({ default: mod.Slide })))
-const Home = ({ loadNavbar, events, getEvents }) => {
+const Slide = lazy(() => import('./../../../UI').then(mod => ({ default: mod.Slide })));
 
-    const [eventsTest] = useState([{
-        eventId: 2,
-        title: "My title test",
-        description: "My description worked",
-        imgName: '5f51682a1c9cbe2708488223.jpg'
-    }]);
-
-    useEffect(() => {
-        // getEvents();
-        console.log(events);
-    })
+const Home = (props) => {
 
     return (
         <React.Fragment>
-            {loadNavbar()}
+            {props.loadNavbar()}
             <div className="">
-                {eventsTest.map(event => (
+                {props.events.map(event => (
                     <div key={event.eventId}>
                         <Slide src={`${process.env.REACT_APP_API}/event/${event.imgName}`} title={event.title} description={event.description}  />
                     </div>
@@ -35,7 +23,4 @@ const mapStateToProps = state => ({
     events: state.events
 })
 
-const mapDispatchToProps = dispatch => ({
-    getEvents: () => dispatch(actions.getEvents())
-})
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);

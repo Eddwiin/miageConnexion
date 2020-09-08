@@ -47,7 +47,6 @@ export function* addOrUpdateEventImage(action) {
 export function* getEvents(action) {
     try {
         const response = yield API.get("/event/all")
-        console.log({ response })
         yield put(actions.getEventsSuccess(response.data))
     } catch(error) {
         console.error(error);
