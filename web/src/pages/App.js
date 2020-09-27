@@ -4,7 +4,8 @@ import SETUP_ROUTES from '../configs/setupRoutes';
 import { connect } from 'react-redux';
 import * as actions from './../stores/actions';
 
-const Navbar = lazy(() => import('./../UI').then(mod => ({ default: mod.Navbar })))
+const Navbar = lazy(() => import('./../UI').then(mod => ({ default: mod.Navbar })));
+// const Footer = lazy(() => import('./../UI').then(mod => ({ default: mod.Footer })))
 
 const Home = lazy(() => import('./containers/Home/Home'));
 const Login = lazy(() => import('./components/Login/Login'));
@@ -14,12 +15,23 @@ const Logout = lazy(() => import('./components/Logout/Logout'));
 
 export function UnconnectedApp({ checkIsAuthentified, isAuthentified, getEvents }) {
 
-
   let loadRoutes = React.useCallback(() => {
     if (!isAuthentified) {
-      const loadNavbar = () => (<Navbar title="Miage Connexion" data-test="navbar-unlogged">
-        <Link to={SETUP_ROUTES.LOGIN}>Login</Link>
-      </Navbar>)
+      const loadNavbar = () => (
+        <Navbar navigations={[
+          {
+            menu: 'Home',
+            to: SETUP_ROUTES.HOME
+          },
+          {
+            menu: 'Login',
+            to: SETUP_ROUTES.LOGIN
+          }
+        ]} data-test="navbar-unlogged" ></Navbar>
+      )
+      // const loadNavbar = () => (<Navbar menus={['Home']} data-test="navbar-unlogged">
+      //   <Link to={SETUP_ROUTES.LOGIN}>Login</Link>
+      // </Navbar>)
 
       return (
         <Switch data-test="routes-unlogged">
@@ -47,12 +59,13 @@ export function UnconnectedApp({ checkIsAuthentified, isAuthentified, getEvents 
   React.useEffect(() => {
     getEvents();
     checkIsAuthentified();
-  }, [getEvents,checkIsAuthentified]);
- 
+  }, [getEvents, checkIsAuthentified]);
+
   return (
     <Router data-test="component-app">
       <Suspense fallback={<div>Loading...</div>}>
         {loadRoutes()}
+        {/* <Footer /> */}
       </Suspense>
     </Router>
   );

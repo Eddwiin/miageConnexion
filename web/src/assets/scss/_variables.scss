@@ -1,14 +1,23 @@
 $breakpoints: (
   "tab-port": (
-    max-width: 56.25em
+    max-width: 56.25em,
   ),
   "tab-land": (
-    max-width: 75em
+    max-width: 75em,
   ),
   "big-desktop": (
-    min-width: 112.5em
-  )
+    min-width: 112.5em,
+  ),
 ) !default;
+
+
+$background-primary: #DEDCDB;
+$background-secondary: #FBF9F8;
 
 $color-primary: #809fff;
 $color-danger: #ed1c07;
+$color-primary-dark-4: #50187e;
+$color-white: #fff;
+$color-primary-light-3: #d8b9f2;
+$color-grey: #ced4da;
+$color-primary-dark-4: #50187e;

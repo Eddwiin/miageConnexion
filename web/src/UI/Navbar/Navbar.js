@@ -1,20 +1,24 @@
 import React from 'react';
 import style from './Navbar.module.scss';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Navbar = ({ children, title, onClick }) => {
+const Navbar = ({ children, navigations, onClick }) => {
     return (
-        <div className={style.navbar} data-test="component-navbar">
-            <div className={style.navbar__title} onClick={onClick} data-test="title-text">{title}</div>
-            <div className={style.navbar__menu}>
-                {children}
-            </div>
-        </div>
+        <nav className={style.navbar} data-test="component-navbar">
+            {navigations.map(navigation => (
+                <Link key={navigation.menu} to={navigation.to} className={style.navbar__menu}>{navigation.menu}</Link>
+            ))}
+        </nav>
     )
 }
 
 Navbar.propTypes = {
-    title: PropTypes.string,
+    navigations: PropTypes.arrayOf(
+        PropTypes.shape({
+            to: PropTypes.string,
+            menu: PropTypes.string
+        })).isRequired,
     onClick: PropTypes.func
 }
 

@@ -1,38 +1,57 @@
 @import "./../../assets/scss/variables";
 
 .navbar {
+  // background-color: $color-primary;
   display: flex;
-  background-color: $color-primary;
-  color: white;
-  height: 3.5rem;
-  justify-content: space-between;
-
-  &__title {
-    cursor: pointer;
-    text-transform: uppercase;
-    padding: 1.2rem;
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-
   &__menu {
-    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-decoration: none;
+    padding-left: 1rem;
 
-    & > a {
-      text-decoration: none;
-      font-size: 1.2rem;
-      color: white;
-      white-space: nowrap;
-      padding-left: 1rem;
-    }
-
-    // &:hover {
-    //   cursor: pointer;
-    //   transform: scale(2.1);
-    // }
-
-    &:not(:last-child) {
-      padding-right: 1rem;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: red;
+      bottom: 2px;
+      height: 2px;
     }
   }
 }
+// .navbar {
+//   display: flex;
+//   background-color: $color-primary;
+//   color: white;
+//   height: 2.5rem;
+//   justify-content: space-between;
+
+//   &__title {
+//     cursor: pointer;
+//     text-transform: uppercase;
+//     padding: .8rem;
+//     font-weight: bold;
+//     // font-size: 1.2rem;
+//   }
+
+//   &__menu {
+//     padding: .5rem;
+
+//     & > a {
+//       text-decoration: none;
+//       font-size: 1.2rem;
+//       color: white;
+//       white-space: nowrap;
+//       padding-left: 1rem;
+//     }
+
+//     // &:hover {
+//     //   cursor: pointer;
+//     //   transform: scale(2.1);
+//     // }
+
+//     &:not(:last-child) {
+//       padding-right: 1rem;
+//     }
+//   }
+// }
