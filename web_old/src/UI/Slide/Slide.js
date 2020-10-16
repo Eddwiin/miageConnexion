@@ -6,8 +6,8 @@ const Slide = ({ src, title, description }) => (
     <figure className={style.slide}>
         <img src={src}  className={style.slide__img} alt="another" />
         <div className={style.slide__overlay}>
-            <h4 className={style.slide__overlay__title}>{title}</h4>
-            <div className={style.slide__overlay__text}>{description}</div>
+            {/* <h4 className={style.slide__overlay__title}>{title}</h4>
+            <div className={style.slide__overlay__text}>{description}</div> */}
         </div>
     </figure>
 )

@@ -1,0 +1,66 @@
+@import "./../../../assets/scss/variables";
+
+.home {
+  // position: absolute;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr) [dood-start] repeat(
+      8,
+      [col-start] minmax(min-content, 14rem) [col-end]
+    )
+    [dood-end] minmax(6rem, 1fr) [full-end];
+  grid-auto-rows: min-content minmax(100px, auto);
+  // width: 75%;
+  // margin-left: 12rem;
+  background-color: $background-secondary;
+  height: 100%;
+
+  &__slides {
+    grid-column: full-start / full-end;
+    // display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    width: 100%;
+    min-height: 100%;
+    max-height: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    & > figure {
+      margin: 0 !important;
+      width: 100%;
+    }
+  }
+}
+// .home {
+//   display: grid;
+//   grid-template-columns:
+//     [full-start] minmax(6rem, 1fr) [dood-start] repeat(
+//       8,
+//       [col-start] minmax(min-content, 14rem) [col-end]
+//     )
+//     [dood-end] minmax(6rem, 1fr) [full-end];
+
+//   margin: 0 auto;
+//   grid-template-rows: 80vh repeat(3, min-content);
+//   grid-auto-rows: min-content minmax(100px, auto);
+//   position: absolute;
+//   background-color: $background-secondary;
+//     min-height: 100%;
+//     max-height: auto;
+//   width: 75%;
+//   margin-left: 12rem;
+
+//   &__slides {
+//     grid-column: full-start / full-end;
+//     display: flex;
+//     overflow-x: auto;
+//     overflow-y: hidden;
+//     white-space: nowrap;
+//     height: 100%;
+//     &::-webkit-scrollbar {
+//       display: none;
+//     }
+//   }
+// }

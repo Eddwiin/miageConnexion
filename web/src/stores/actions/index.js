@@ -1,21 +1,7 @@
 export {
-    authStart,
+    authInit,
+    authLoading,
     authFail,
     authSuccess,
-    authUser,
-    authCheckState,
-    logout
+    authUser
 } from './auth'
-
-export {
-    addEvent,
-    addEventSuccess,
-    addEventFail,
-    addOrUpdateEventImage,
-    addOrUpdateEventImageSuccess,
-    addEventImageFail,
-    getEvents,
-    getEventsSuccess,
-    updateEvent,
-    updateEventSuccess
-} from './events'

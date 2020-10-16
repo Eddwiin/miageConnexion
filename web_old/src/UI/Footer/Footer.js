@@ -1,5 +1,5 @@
 import React from 'react';
-import SETUP_ROUTES from './../../configs/setupRoutes';
+import SETUP_ROUTES from '../../configs/setupRoutes';
 import style from './Footer.module.scss';
 import { Link } from 'react-router-dom';
 

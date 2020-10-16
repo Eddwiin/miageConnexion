@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Home = () => {
-
+const CMS = () => {
     return (
         <div>
-            Home
+            CMS
         </div>
     )
 }
-export default Home
+
+export default CMS;

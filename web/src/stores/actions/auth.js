@@ -1,29 +1,13 @@
-import * as actionTypes from './actionTypes';
+import * as actionsType from './actionsType';
 
-export const authStart = () => ({
-    type: actionTypes.AUTH_START
+export const authInit = () => ({ type: actionsType.AUTH_INIT });
+export const authLoading = () => ({ type: actionsType.AUTH_LOADING });
+export const authFail = (payload) => ({
+    type: actionsType.AUTH_FAIL,
+    payload
 })
-
-export const authFail = (error) => ({
-    type: actionTypes.AUTH_FAIL,
-    error
-})
-
 export const authSuccess = (payload) => ({
-    type: actionTypes.AUTH_SUCCESS,
+    type: actionsType.AUTH_SUCCESS,
     payload
 })
-
-export const authUser = (payload) => ({
-    type: actionTypes.AUTH_USER,
-    payload
-})
-
-export const authCheckState = (payload) => ({
-    type: actionTypes.AUTH_CHECK_STATE,
-    payload
-})
-
-export const logout = () => ({
-    type: actionTypes.AUTH_LOGOUT
-})
+export const authUser = () => ({ type: actionsType.AUTH_USER })
