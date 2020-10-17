@@ -1,0 +1,32 @@
+@import "./../../assets/scss/variables";
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background-color: $navbar-color;
+
+  &__title > * {
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__menus {
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    & > * {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+}
