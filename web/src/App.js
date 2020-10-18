@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from 'react';
 import { Redirect, Route, BrowserRouter, Switch, Link } from 'react-router-dom';
 import SETUP_ROUTES from './configs/setupRoutes';
 import { connect } from 'react-redux';
-import style from './App.module.scss';
 
 const Home = lazy(() => import('./pages/containers/Home/Home'));
 const Login = lazy(() => import('./pages/components/Login/Login'));
@@ -33,19 +32,13 @@ const App = (props) => {
   }
   return (
     <BrowserRouter>
-      <div className={style.app}>
         <Suspense fallback={<div>loading...</div>}>
           <Switch>
             {!props.isAuthentified && (
               <React.Fragment>
-                <div className={style.app__navbar}>
-                  {loadNavbar()}
-                </div>
-                <div className={style.app__routes}>
                   <Route path={SETUP_ROUTES.HOME} render={() => <Home loadNavbar={loadNavbar} />} />
                   <Route path={SETUP_ROUTES.LOGIN} render={() => <Login loadNavbar={loadNavbar} />} />
                   <Redirect to={SETUP_ROUTES.HOME} />
-                </div>
               </React.Fragment>
             )}
             
@@ -57,7 +50,6 @@ const App = (props) => {
             )}
           </Switch>
         </Suspense>
-      </div>
     </BrowserRouter>
   );
 }
