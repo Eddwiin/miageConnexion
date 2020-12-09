@@ -1,3 +1,18 @@
+.btn:link,
+.btn:focus,
 .btn {
+    cursor: pointer;
     padding: 1rem;
+    &--rounded:link,
+    &--rounded:focus &--rounded {
+        border-radius: 200px;
+        padding: 1rem;
+    }
+}
+
+.btn {
+    &--rounded:focus &--rounded {
+        border-radius: 200px;
+        padding: 1rem;
+    }
 }
